@@ -1,91 +1,141 @@
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Check } from 'lucide-react';
+"use client";
 
-const features = [
-  'Practical, hands-on training programs',
-  'Personalized mentorship and support',
-  'Direct connections to employers',
-  'Ongoing community engagement',
+import { useRef } from "react";
+import Image from "next/image";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { CheckCircle2 } from "lucide-react";
+
+const checklist = [
+  "Practical, hands-on training programs",
+  "Personalized mentorship and support",
+  "Direct connections to employers",
+  "Ongoing community engagement",
 ];
 
-const AboutSection = () => {
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true, margin: '-100px' });
+export default function AboutSection() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const checklistInView = useInView(sectionRef, { once: true, margin: "-80px" });
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-50px", "50px"]);
 
   return (
-    <section id="about" className="py-20 lg:py-28 bg-[#F8F9FA]">
-      <div className="w-full px-4 sm:px-6 lg:px-12">
-        <div
-          ref={containerRef}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
-        >
-          {/* Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
-            className="relative"
-          >
-            <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
-              <img
-                src="/about_image.jpg"
-                alt="Students learning"
-                className="w-full h-[400px] lg:h-[500px] object-cover"
+    <section
+      id="about"
+      ref={sectionRef}
+      className="py-24 bg-white overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* LEFT — Image with parallax & clip-path reveal */}
+          <div ref={imageRef} className="relative h-[500px] rounded-2xl overflow-hidden">
+            <motion.div
+              initial={{ clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)" }}
+              whileInView={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+              style={{ y: imageY, willChange: "transform" }}
+              className="absolute inset-0"
+            >
+              <Image
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80"
+                alt="Training in progress"
+                fill
+                className="object-cover"
               />
-            </div>
-            {/* Decorative Element */}
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#E85D04] rounded-2xl -z-10" />
-          </motion.div>
+            </motion.div>
 
-          {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-          >
-            <span className="text-sm font-semibold text-[#E85D04] uppercase tracking-wider mb-4 block">
-              Our Mission
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1A2E] mb-6">
+            {/* Decorative accent */}
+            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-orange-500/10 rounded-2xl -z-10" />
+          </div>
+
+          {/* RIGHT — Content */}
+          <div className="lg:pl-8">
+            {/* Label with animated left border */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-3 mb-6"
+            >
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: 4 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="h-5 bg-orange-500 rounded-full flex-shrink-0"
+              />
+              <span className="text-orange-500 font-semibold text-sm tracking-widest uppercase">
+                Our Mission
+              </span>
+            </motion.div>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="font-heading text-4xl md:text-5xl font-black text-slate-900 leading-tight mb-6"
+            >
               Building Brighter Futures Together
-            </h2>
-            <p className="text-lg text-[#6C757D] mb-6 leading-relaxed">
-              Since 2015, Adele Empowerment Foundation has been dedicated to transforming
-              lives through education and skills development. We believe everyone deserves
-              access to opportunities that help them thrive.
-            </p>
-            <p className="text-lg text-[#6C757D] mb-8 leading-relaxed">
-              Our approach combines practical training with personalized support, ensuring
-              that each individual has the tools they need to succeed in their chosen path.
-            </p>
+            </motion.h2>
 
-            {/* Features List */}
-            <div className="space-y-4">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={feature}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-slate-600 leading-relaxed mb-3"
+            >
+              Since 2015, Adele Empowerment Foundation has been dedicated to transforming lives
+              through education and skills development. We believe everyone deserves access to
+              opportunities that help them thrive.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-slate-600 leading-relaxed mb-8"
+            >
+              Our approach combines practical training with personalized support, ensuring each
+              individual has the tools they need to succeed in their chosen path.
+            </motion.p>
+
+            {/* Checklist */}
+            <ul className="space-y-4">
+              {checklist.map((item, i) => (
+                <motion.li
+                  key={item}
                   initial={{ opacity: 0, x: 20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.4 + index * 0.1,
-                    ease: [0.4, 0, 0.2, 1],
-                  }}
+                  animate={checklistInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.4 + i * 0.1 }}
                   className="flex items-center gap-3"
                 >
-                  <div className="w-6 h-6 rounded-full bg-[#E85D04]/10 flex items-center justify-center flex-shrink-0">
-                    <Check className="w-4 h-4 text-[#E85D04]" />
-                  </div>
-                  <span className="text-[#1A1A2E] font-medium">{feature}</span>
-                </motion.div>
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={checklistInView ? { scale: 1 } : {}}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 20,
+                      delay: 0.4 + i * 0.1,
+                    }}
+                  >
+                    <CheckCircle2 size={20} className="text-orange-500 flex-shrink-0" />
+                  </motion.div>
+                  <span className="text-slate-700 font-medium">{item}</span>
+                </motion.li>
               ))}
-            </div>
-          </motion.div>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default AboutSection;
+}
