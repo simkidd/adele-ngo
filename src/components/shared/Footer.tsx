@@ -6,11 +6,12 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const quickLinks = [
-  { label: "Home", href: "#" },
-  { label: "Programs", href: "#programs" },
-  { label: "About Us", href: "#about" },
-  { label: "Success Stories", href: "#testimonials" },
-  { label: "Contact", href: "#footer" },
+  { label: "Home", href: "/" },
+  { label: "Programs", href: "/programs" },
+  { label: "About Us", href: "/about" },
+  { label: "Success Stories", href: "/stories" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const programs = [
@@ -63,7 +64,7 @@ export default function Footer() {
                     aria-label={s.label}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-9 h-9 rounded-full bg-slate-800 hover:bg-orange-500 flex items-center justify-center transition-colors duration-200"
+                    className="w-9 h-9 rounded-full bg-slate-800 hover:bg-orange-500 flex items-center justify-center transition-colors duration-200 group"
                   >
                     <Icon
                       size={16}
@@ -89,7 +90,7 @@ export default function Footer() {
                   >
                     <span className="relative">
                       {link.label}
-                      <span className="absolute bottom-0 left-0 w-0 h-px bg-orange-400 group-hover:w-full transition-all duration-300" />
+                      <span className="absolute bottom-0 left-0 w-0 h-[0.5px] bg-orange-400 group-hover:w-full transition-all duration-300" />
                     </span>
                   </Link>
                 </li>
@@ -111,7 +112,7 @@ export default function Footer() {
                   >
                     <span className="relative">
                       {p}
-                      <span className="absolute bottom-0 left-0 w-0 h-px bg-orange-400 group-hover:w-full transition-all duration-300" />
+                      <span className="absolute bottom-0 left-0 w-0 h-[0.5px] bg-orange-400 group-hover:w-full transition-all duration-300" />
                     </span>
                   </Link>
                 </li>
@@ -150,10 +151,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin
-                  size={15}
-                  className="text-orange-400 mt-0.5 shrink-0"
-                />
+                <MapPin size={15} className="text-orange-400 mt-0.5 shrink-0" />
                 <span className="text-sm">Port Harcourt, Nigeria</span>
               </li>
             </ul>
@@ -173,7 +171,7 @@ export default function Footer() {
             Built with purpose &hearts;{" "}
             <a
               href="https://ionidev.com"
-              className="text-orange-500"
+              className="text-orange-400"
               target="_blank"
               rel="noopener noreferrer"
             >
