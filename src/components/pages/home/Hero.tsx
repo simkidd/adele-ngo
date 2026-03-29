@@ -1,15 +1,54 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   motion,
   useMotionValue,
   useTransform,
   useSpring,
   useScroll,
+  useInView,
 } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+
+const stats = [
+  { value: 12000, suffix: "+", label: "People Trained" },
+  { value: 68, suffix: "%", label: "Employment Rate" },
+  { value: 150, suffix: "+", label: "Partner Orgs" },
+  { value: 45, suffix: "+", label: "Communities Served" },
+];
+
+function Counter({ target, suffix }: { target: number; suffix: string }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const startTime = useRef<number | null>(null);
+  const duration = 2000;
+
+  useEffect(() => {
+    if (!inView) return;
+    startTime.current = null;
+    const animate = (timestamp: number) => {
+      if (!startTime.current) startTime.current = timestamp;
+      const elapsed = timestamp - startTime.current;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * target));
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  }, [inView, target]);
+
+  return (
+    <span ref={ref}>
+      <span className="text-2xl font-heading font-bold text-white">
+        {count.toLocaleString()}
+       {suffix}
+      </span>
+    </span>
+  );
+}
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -44,16 +83,10 @@ export default function Hero() {
     mouseY.set(0);
   };
 
-  const stats = [
-    { value: "12,000+", label: "People Trained" },
-    { value: "68%", label: "Employment Rate" },
-    { value: "150+", label: "Partner Orgs" },
-  ];
-
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-dvh flex items-center overflow-hidden"
     >
       {/* Background image with parallax */}
       <motion.div
@@ -153,9 +186,7 @@ export default function Hero() {
           >
             {stats.map((s) => (
               <div key={s.label}>
-                <div className="text-2xl font-heading font-bold text-white">
-                  {s.value}
-                </div>
+                <Counter target={s.value} suffix={s.suffix} />
                 <div className="text-sm text-white/60 mt-0.5">{s.label}</div>
               </div>
             ))}
