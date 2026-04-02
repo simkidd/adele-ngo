@@ -46,7 +46,7 @@ export default function Header() {
         <Link
           href="/"
           className={cn(
-            "flex items-center gap-2 p-4 rounded-b-3xl transition-all duration-300",
+            "flex items-center gap-2 p-4 rounded-b-3xl transition-all duration-300 w-fit mr-auto",
             isDark ? "bg-white/95 backdrop-blur-md shadow-sm" : "",
           )}
         >
