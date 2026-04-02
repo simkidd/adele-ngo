@@ -2,6 +2,7 @@ import AboutSection from "@/components/pages/home/AboutSection";
 import CTASection from "@/components/pages/home/CTASection";
 import Gallery from "@/components/pages/home/Gallery";
 import Hero from "@/components/pages/home/Hero";
+import PartnersMarquee from "@/components/pages/home/PartnersMarquee";
 import Programs from "@/components/pages/home/Programs";
 import Testimonials from "@/components/pages/home/Testimonials";
 
@@ -13,6 +14,7 @@ const HomePage = () => {
       <Programs />
       <AboutSection />
       <Testimonials />
+      <PartnersMarquee />
       <Gallery />
       <CTASection />
     </div>

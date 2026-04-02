@@ -1,0 +1,18 @@
+import React from "react";
+import Image from "next/image";
+
+const Logo = ({ ...props }: React.ComponentProps<"div">) => {
+  return (
+    <div className="h-10 shrink-0" {...props}>
+      <Image
+        src={"/logos/adele-logo.png"}
+        alt="logo"
+        width={150}
+        height={150}
+        className="object-contain w-full h-full"
+      />
+    </div>
+  );
+};
+
+export default Logo;

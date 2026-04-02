@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import Logo from "./Logo";
 
 const links = [
   { label: "Programs", href: "/programs" },
@@ -38,16 +39,16 @@ export default function Header() {
         isDark ? "bg-transparent" : "bg-white/95 backdrop-blur-md shadow-sm"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <span
-            className={`font-bold text-lg lg:text-xl tracking-tight transition-colors ${
-              !isDark ? "text-[#1A1A2E]" : "text-white"
-            }`}
-          >
-            Adele<span className="text-[#E85D04]">.</span>
-          </span>
+        <Link
+          href="/"
+          className={cn(
+            "flex items-center gap-2 p-4 rounded-b-3xl transition-all duration-300",
+            isDark ? "bg-white/95 backdrop-blur-md shadow-sm" : "",
+          )}
+        >
+          <Logo />
         </Link>
 
         {/* Desktop nav */}
@@ -62,31 +63,26 @@ export default function Header() {
                   "text-sm font-medium transition-colors relative group",
                   isDark
                     ? "text-white/90 hover:text-white"
-                    : "text-slate-700 hover:text-orange-500",
-                  isActive ? "text-orange-500" : "",
+                    : "text-slate-700 hover:text-primary",
+                  isActive ? "text-primary" : "",
                 )}
               >
                 {link.label}
                 <span
                   className={cn(
-                    "absolute -bottom-1 left-0 h-0.5 bg-orange-500 transition-all duration-300",
+                    "absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300",
                     isActive ? "w-full" : "w-0 group-hover:w-full",
                   )}
                 />
               </Link>
             );
           })}
-          <Link
-            href="/contact"
-            className="bg-orange-500 hover:bg-orange-600 text-white text-sm font-semibold px-5 py-2 rounded-full transition-all hover:scale-105 active:scale-95"
-          >
-            Donate
-          </Link>
+        
         </div>
 
         {/* Mobile toggle */}
         <button
-          className={`md:hidden ${!isDark ? "text-slate-800" : "text-white"}`}
+          className={`cursor-pointer md:hidden ${!isDark ? "text-slate-800" : "text-white"}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -110,21 +106,15 @@ export default function Header() {
                   href={link.href}
                   className={`font-medium transition-colors ${
                     pathname === link.href
-                      ? "text-orange-500"
-                      : "text-slate-700 hover:text-orange-500"
+                      ? "text-primary"
+                      : "text-slate-700 hover:text-primary"
                   }`}
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
                 </Link>
               ))}
-              <Link
-                href="#cta"
-                className="bg-orange-500 text-white text-center font-semibold px-5 py-2.5 rounded-full"
-                onClick={() => setMobileOpen(false)}
-              >
-                Donate Now
-              </Link>
+             
             </div>
           </motion.div>
         )}

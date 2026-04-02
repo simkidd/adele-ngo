@@ -61,7 +61,7 @@ const programs = [
     image:
       "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=900&q=80",
     color: "from-orange-500 to-red-500",
-    lightColor: "bg-orange-50",
+    lightColor: "bg-primary/10",
     accentColor: "text-orange-600",
     curriculum: [
       "Business ideation & market research",
@@ -339,7 +339,7 @@ export default function ProgramsContent() {
               >
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-7 py-3.5 rounded-full transition-all hover:scale-105"
+                  className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold px-7 py-3.5 rounded-full transition-all hover:scale-105"
                 >
                   Apply for a Program <ArrowRight size={16} />
                 </Link>
@@ -360,7 +360,7 @@ export default function ProgramsContent() {
                   transition={{ delay: i * 0.08 }}
                   className="bg-slate-50 rounded-2xl p-6 text-center"
                 >
-                  <div className="font-heading text-3xl font-black text-orange-500 mb-1">
+                  <div className="font-heading text-3xl font-black text-primary mb-1">
                     {s.value}
                   </div>
                   <div className="text-sm text-slate-500">{s.label}</div>
@@ -442,7 +442,7 @@ export default function ProgramsContent() {
                 transition={{ delay: i * 0.1 }}
                 className="text-center"
               >
-                <div className="w-12 h-12 bg-orange-500 text-white font-heading font-black text-lg rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-12 h-12 bg-primary text-white font-heading font-black text-lg rounded-full flex items-center justify-center mx-auto mb-4">
                   {s.step}
                 </div>
                 <h3 className="font-semibold text-slate-900 mb-2">{s.title}</h3>
@@ -461,7 +461,7 @@ export default function ProgramsContent() {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-10 py-4 rounded-full text-lg transition-all hover:scale-105 shadow-lg shadow-orange-500/25"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold px-10 py-4 rounded-full text-lg transition-all hover:scale-105 shadow-lg shadow-primary/25"
             >
               Apply Now <ArrowRight size={18} />
             </Link>

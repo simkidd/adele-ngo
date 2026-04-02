@@ -4,6 +4,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { cn } from "@/lib/utils";
+import Logo from "./Logo";
 
 const quickLinks = [
   { label: "Home", href: "/" },
@@ -43,11 +45,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Column 1 — Brand */}
           <div className="md:col-span-1">
-            <h3 className="inline-block font-heading text-2xl font-black text-white mb-3">
-              <span className="text-2xl font-bold text-white">
-                Adele<span className="text-[#E85D04]">.</span>
-              </span>
-            </h3>
+            <div
+              className={cn(
+                "flex items-center justify-center gap-2 p-3 rounded-full bg-white w-fit mb-4",
+              )}
+            >
+              <Logo className="h-12" />
+            </div>
 
             <p className="text-sm leading-relaxed mb-6">
               Empowering communities through skills, support, and opportunity
@@ -64,7 +68,7 @@ export default function Footer() {
                     aria-label={s.label}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-9 h-9 rounded-full bg-slate-800 hover:bg-orange-500 flex items-center justify-center transition-colors duration-200 group"
+                    className="w-9 h-9 rounded-full bg-slate-800 hover:bg-primary flex items-center justify-center transition-colors duration-200 group"
                   >
                     <Icon
                       size={16}
@@ -86,11 +90,11 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm hover:text-orange-400 transition-colors relative group"
+                    className="text-sm hover:text-primary transition-colors relative group"
                   >
                     <span className="relative">
                       {link.label}
-                      <span className="absolute bottom-0 left-0 w-0 h-[0.5px] bg-orange-400 group-hover:w-full transition-all duration-300" />
+                      <span className="absolute bottom-0 left-0 w-0 h-[0.5px] bg-primary group-hover:w-full transition-all duration-300" />
                     </span>
                   </Link>
                 </li>
@@ -108,11 +112,11 @@ export default function Footer() {
                 <li key={p}>
                   <Link
                     href="#programs"
-                    className="text-sm hover:text-orange-400 transition-colors relative group"
+                    className="text-sm hover:text-primary transition-colors relative group"
                   >
                     <span className="relative">
                       {p}
-                      <span className="absolute bottom-0 left-0 w-0 h-[0.5px] bg-orange-400 group-hover:w-full transition-all duration-300" />
+                      <span className="absolute bottom-0 left-0 w-0 h-[0.5px] bg-primary group-hover:w-full transition-all duration-300" />
                     </span>
                   </Link>
                 </li>
@@ -129,11 +133,11 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <Mail
                   size={15}
-                  className="text-orange-400 mt-0.5 flex-shrink-0"
+                  className="text-primary mt-0.5 flex-shrink-0"
                 />
                 <a
                   href="mailto:hello@adele.foundation.org"
-                  className="text-sm hover:text-orange-400 transition-colors"
+                  className="text-sm hover:text-primary transition-colors"
                 >
                   hello@adelefoundation.org
                 </a>
@@ -141,17 +145,17 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <Phone
                   size={15}
-                  className="text-orange-400 mt-0.5 flex-shrink-0"
+                  className="text-primary mt-0.5 flex-shrink-0"
                 />
                 <a
                   href="tel:+234215076750"
-                  className="text-sm hover:text-orange-400 transition-colors"
+                  className="text-sm hover:text-primary transition-colors"
                 >
                   +234 215 076 750
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin size={15} className="text-orange-400 mt-0.5 shrink-0" />
+                <MapPin size={15} className="text-primary mt-0.5 shrink-0" />
                 <span className="text-sm">Port Harcourt, Nigeria</span>
               </li>
             </ul>
@@ -171,7 +175,7 @@ export default function Footer() {
             Built with purpose &hearts;{" "}
             <a
               href="https://ionidev.com"
-              className="text-orange-400"
+              className="text-primary"
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -245,7 +245,7 @@ export default function GalleryContent() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
               >
-                <div className="font-heading text-3xl font-black text-orange-500">
+                <div className="font-heading text-3xl font-black text-primary">
                   {s.value}
                 </div>
                 <div className="text-sm text-slate-500 mt-1">{s.label}</div>
@@ -263,7 +263,7 @@ export default function GalleryContent() {
             viewport={{ once: true }}
             className="flex flex-wrap gap-3 mb-12 items-center"
           >
-            <Filter size={16} className="text-slate-400 flex-shrink-0" />
+            <Filter size={16} className="text-slate-400 shrink-0" />
             {categories.map((cat) => (
               <motion.button
                 key={cat}
@@ -272,8 +272,8 @@ export default function GalleryContent() {
                 whileTap={{ scale: 0.97 }}
                 className={`text-sm font-semibold px-5 py-2 rounded-full transition-all duration-200 ${
                   activeCategory === cat
-                    ? "bg-orange-500 text-white shadow-md shadow-orange-500/25"
-                    : "bg-white text-slate-600 border border-slate-200 hover:border-orange-300 hover:text-orange-500"
+                    ? "bg-primary text-white shadow-md shadow-primary/25"
+                    : "bg-white text-slate-600 border border-slate-200 hover:border-primary/30 hover:text-primary"
                 }`}
               >
                 {cat}
@@ -311,7 +311,7 @@ export default function GalleryContent() {
                     loading="lazy"
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-linear-to-t from-slate-900/80 via-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                   <div className="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
                     <ZoomIn size={14} className="text-white" />
@@ -322,13 +322,13 @@ export default function GalleryContent() {
                       {photo.caption}
                     </div>
                     <div className="text-white/60 text-xs mt-1 flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 bg-orange-400 rounded-full inline-block" />
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full inline-block" />
                       {photo.location}
                     </div>
                   </div>
 
                   <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="text-xs font-semibold bg-orange-500 text-white px-2.5 py-1 rounded-full">
+                    <span className="text-xs font-semibold bg-primary text-white px-2.5 py-1 rounded-full">
                       {photo.category}
                     </span>
                   </div>
@@ -401,7 +401,7 @@ export default function GalleryContent() {
                     {currentPhoto.caption}
                   </p>
                   <p className="text-slate-400 text-sm flex items-center gap-2">
-                    <span className="inline-block w-1.5 h-1.5 bg-orange-400 rounded-full" />
+                    <span className="inline-block w-1.5 h-1.5 bg-primary rounded-full" />
                     {currentPhoto.location} · {currentPhoto.category}
                   </p>
                 </div>
@@ -427,7 +427,7 @@ export default function GalleryContent() {
                     }}
                     className={`shrink-0 relative w-14 h-10 rounded-lg overflow-hidden transition-all ${
                       i === lightboxIndex
-                        ? "ring-2 ring-orange-500 opacity-100 scale-105"
+                        ? "ring-2 ring-primary opacity-100 scale-105"
                         : "opacity-40 hover:opacity-70"
                     }`}
                   >
@@ -451,7 +451,7 @@ export default function GalleryContent() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 bg-orange-100 text-orange-600 text-sm font-semibold px-4 py-2 rounded-full mb-6"
+            className="inline-flex items-center gap-2 bg-primary/10-100 text-primary/90 text-sm font-semibold px-4 py-2 rounded-full mb-6"
           >
             📷 Are you a graduate or partner?
           </motion.div>
@@ -471,7 +471,7 @@ export default function GalleryContent() {
             className="text-slate-500 leading-relaxed mb-8"
           >
             Tag us on social media with{" "}
-            <span className="font-semibold text-orange-500">
+            <span className="font-semibold text-primary">
               #AdeleEmpowers
             </span>{" "}
             or send your photos directly to our team. The best community shots
@@ -486,7 +486,7 @@ export default function GalleryContent() {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-3.5 rounded-full transition-all hover:scale-105"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold px-8 py-3.5 rounded-full transition-all hover:scale-105"
             >
               Submit Photos
             </Link>
@@ -494,7 +494,7 @@ export default function GalleryContent() {
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border-2 border-slate-200 hover:border-orange-400 text-slate-700 font-bold px-8 py-3.5 rounded-full transition-all hover:text-orange-500"
+              className="inline-flex items-center gap-2 border-2 border-slate-200 hover:border-primary/40 text-slate-700 font-bold px-8 py-3.5 rounded-full transition-all hover:text-primary"
             >
               Follow on Instagram
             </a>

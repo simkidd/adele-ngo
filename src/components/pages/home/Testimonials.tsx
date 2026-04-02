@@ -38,7 +38,7 @@ export default function Testimonials() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-orange-500 font-semibold text-sm tracking-widest uppercase mb-3"
+            className="text-primary font-semibold text-sm tracking-widest uppercase mb-3"
           >
             Testimonials
           </motion.p>
@@ -82,7 +82,7 @@ export default function Testimonials() {
                 transition={{ delay: i * 0.15 + 0.2 }}
                 className="text-orange-200 mb-4"
               >
-                <Quote size={40} className="fill-orange-100 stroke-orange-200" />
+                <Quote size={40} className="fill-primary/20 stroke-primary/30" />
               </motion.div>
 
               {/* Quote text */}
@@ -114,7 +114,7 @@ export default function Testimonials() {
                 </motion.div>
                 <div>
                   <div className="font-semibold text-slate-900 text-sm">{t.name}</div>
-                  <div className="text-orange-500 text-xs">{t.role}</div>
+                  <div className="text-primary text-xs">{t.role}</div>
                 </div>
               </div>
             </motion.div>

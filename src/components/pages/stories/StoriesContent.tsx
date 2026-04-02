@@ -114,7 +114,7 @@ export default function StoriesContent() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
               >
-                <div className="font-heading text-4xl font-black text-orange-500 mb-1">{s.value}</div>
+                <div className="font-heading text-4xl font-black text-primary mb-1">{s.value}</div>
                 <div className="text-sm text-slate-500">{s.label}</div>
               </motion.div>
             ))}
@@ -134,8 +134,8 @@ export default function StoriesContent() {
                 onClick={() => setActiveTag(tag)}
                 className={`text-sm font-medium px-4 py-2 rounded-full transition-all ${
                   activeTag === tag
-                    ? "bg-orange-500 text-white"
-                    : "bg-white text-slate-600 border border-slate-200 hover:border-orange-300"
+                    ? "bg-primary text-white"
+                    : "bg-white text-slate-600 border border-slate-200 hover:border-primary/40"
                 }`}
               >
                 {tag}
@@ -161,7 +161,7 @@ export default function StoriesContent() {
                     <Image src={story.image} alt={story.name} fill className="object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent" />
                     <div className="absolute bottom-4 left-5 right-5">
-                      <span className="inline-block bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full mb-2">
+                      <span className="inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-2">
                         {story.program}
                       </span>
                       <div className="text-white font-heading font-bold text-lg leading-tight">{story.name}</div>
@@ -171,7 +171,7 @@ export default function StoriesContent() {
 
                   {/* Body */}
                   <div className="p-6">
-                    <Quote size={24} className="text-orange-200 mb-3" />
+                    <Quote size={24} className="text-primary/30 mb-3" />
                     <p className="text-slate-700 text-sm leading-relaxed mb-4 italic">
                       &ldquo;{story.shortQuote}&rdquo;
                     </p>
@@ -179,7 +179,7 @@ export default function StoriesContent() {
                     {/* Impact chips */}
                     <div className="flex flex-wrap gap-2 mb-4">
                       {story.impact.map((imp) => (
-                        <span key={imp} className="text-xs bg-orange-50 text-orange-600 px-2.5 py-1 rounded-full">
+                        <span key={imp} className="text-xs bg-primary/10 text-primary/90 px-2.5 py-1 rounded-full">
                           {imp}
                         </span>
                       ))}
@@ -187,7 +187,7 @@ export default function StoriesContent() {
 
                     <button
                       onClick={() => setExpanded(expanded === story.name ? null : story.name)}
-                      className="text-sm font-semibold text-orange-500 hover:text-orange-600 transition-colors cursor-pointer"
+                      className="text-sm font-semibold text-primary hover:text-primary/90 transition-colors cursor-pointer"
                     >
                       {expanded === story.name ? "Read less ↑" : "Read full story →"}
                     </button>
@@ -230,7 +230,7 @@ export default function StoriesContent() {
             Your story could inspire the next person who needs to hear it. Share your journey with us.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-            <Link href="/contact" className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-full text-lg transition-all">
+            <Link href="/contact" className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold px-8 py-4 rounded-full text-lg transition-all">
               Share Your Story <ArrowRight size={18} />
             </Link>
           </motion.div>

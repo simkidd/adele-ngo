@@ -40,7 +40,7 @@ export default function PageHero({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-block text-orange-400 font-semibold text-sm tracking-widest uppercase mb-4"
+          className="inline-block text-primary font-semibold text-sm tracking-widest uppercase mb-4"
         >
           {label}
         </motion.span>
@@ -52,7 +52,7 @@ export default function PageHero({
         >
           {title}{" "}
           {titleAccent && (
-            <span className="text-orange-400 italic">{titleAccent}</span>
+            <span className="text-primary italic">{titleAccent}</span>
           )}
         </motion.h1>
         <motion.p

@@ -107,22 +107,22 @@ export default function ContactContent() {
                       onClick={() => setEnquiry(type.value)}
                       className={`flex flex-col items-start gap-2 p-5 rounded-2xl border-2 transition-all text-left ${
                         enquiry === type.value
-                          ? "border-orange-500 bg-orange-50"
-                          : "border-slate-200 hover:border-orange-200"
+                          ? "border-primary bg-primary/10"
+                          : "border-slate-200 hover:border-primary/40"
                       }`}
                     >
                       <Icon
                         size={20}
                         className={
                           enquiry === type.value
-                            ? "text-orange-500"
+                            ? "text-primary"
                             : "text-slate-400"
                         }
                       />
                       <span
                         className={`text-sm font-semibold ${
                           enquiry === type.value
-                            ? "text-orange-600"
+                            ? "text-primary/90"
                             : "text-slate-700"
                         }`}
                       >
@@ -148,8 +148,8 @@ export default function ContactContent() {
                   },
                 ].map(({ icon: Icon, text }) => (
                   <div key={text} className="flex items-start gap-3">
-                    <div className="w-9 h-9 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon size={16} className="text-orange-500" />
+                    <div className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Icon size={16} className="text-primary" />
                     </div>
                     <span className="text-slate-600 text-sm pt-2">{text}</span>
                   </div>
@@ -204,7 +204,7 @@ export default function ContactContent() {
                           message: "",
                         });
                       }}
-                      className="mt-6 text-sm text-orange-500 font-semibold hover:underline"
+                      className="mt-6 text-sm text-primary font-semibold hover:underline"
                     >
                       Send another message
                     </button>
@@ -233,7 +233,7 @@ export default function ContactContent() {
                             setForm({ ...form, name: e.target.value })
                           }
                           placeholder="Your full name"
-                          className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500 transition"
+                          className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary transition"
                         />
                       </div>
                       <div>
@@ -248,7 +248,7 @@ export default function ContactContent() {
                             setForm({ ...form, email: e.target.value })
                           }
                           placeholder="your@email.com"
-                          className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500 transition"
+                          className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary transition"
                         />
                       </div>
                     </div>
@@ -264,7 +264,7 @@ export default function ContactContent() {
                           setForm({ ...form, phone: e.target.value })
                         }
                         placeholder="+234 ..."
-                        className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500 transition"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary transition"
                       />
                     </div>
 
@@ -279,7 +279,7 @@ export default function ContactContent() {
                           onChange={(e) =>
                             setForm({ ...form, program: e.target.value })
                           }
-                          className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-orange-500 transition"
+                          className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary transition"
                         >
                           <option value="">Select a program</option>
                           <option>Digital Literacy</option>
@@ -311,7 +311,7 @@ export default function ContactContent() {
                                 ? "Describe your organisation and how we might work together..."
                                 : "Tell us how you'd like to get involved..."
                         }
-                        className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500 transition resize-none"
+                        className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary transition resize-none"
                       />
                     </div>
 
@@ -320,7 +320,7 @@ export default function ContactContent() {
                       disabled={loading}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full bg-orange-500 hover:bg-orange-600 disabled:opacity-70 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-colors text-sm cursor-pointer disabled:pointer-events-none"
+                      className="w-full bg-primary hover:bg-primary/90 disabled:opacity-70 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-colors text-sm cursor-pointer disabled:pointer-events-none"
                     >
                       {loading ? (
                         <span className="flex items-center gap-2">
@@ -375,8 +375,8 @@ export default function ContactContent() {
                 transition={{ delay: i * 0.1 }}
                 className="bg-white rounded-2xl p-7 shadow-sm"
               >
-                <div className="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
-                  <MapPin size={18} className="text-orange-500" />
+                <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                  <MapPin size={18} className="text-primary" />
                 </div>
                 <h3 className="font-heading font-bold text-xl text-slate-900 mb-4">
                   {office.city}
@@ -393,7 +393,7 @@ export default function ContactContent() {
                     <Phone size={13} className="text-slate-400" />
                     <a
                       href={`tel:${office.phone}`}
-                      className="hover:text-orange-500 transition-colors"
+                      className="hover:text-primary transition-colors"
                     >
                       {office.phone}
                     </a>
@@ -402,7 +402,7 @@ export default function ContactContent() {
                     <Mail size={13} className="text-slate-400" />
                     <a
                       href={`mailto:${office.email}`}
-                      className="hover:text-orange-500 transition-colors"
+                      className="hover:text-primary transition-colors"
                     >
                       {office.email}
                     </a>
@@ -419,7 +419,7 @@ export default function ContactContent() {
       </section>
 
       {/* Donate strip */}
-      <section className="py-16 bg-orange-500">
+      <section className="py-16 bg-primary">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.h2
             initial={{ opacity: 0 }}
@@ -434,7 +434,7 @@ export default function ContactContent() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-orange-100 mb-6"
+            className="text-primary/20 mb-6"
           >
             Every donation directly funds training, tools, and mentorship for
             someone who needs it.
@@ -445,7 +445,7 @@ export default function ContactContent() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <button className="bg-white text-orange-500 font-bold px-10 py-4 rounded-full text-lg hover:bg-orange-50 transition-colors">
+            <button className="bg-white text-primary font-bold px-10 py-4 rounded-full text-lg hover:bg-primary/10 transition-colors">
               Donate Now
             </button>
           </motion.div>

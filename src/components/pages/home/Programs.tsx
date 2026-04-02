@@ -13,7 +13,6 @@ const programs = [
     icon: Lightbulb,
     image:
       "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80",
-    color: "#F97316",
   },
   {
     title: "Support Services",
@@ -22,7 +21,6 @@ const programs = [
     icon: Heart,
     image:
       "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=800&q=80",
-    color: "#F97316",
   },
   {
     title: "Opportunity Access",
@@ -31,7 +29,6 @@ const programs = [
     icon: Globe,
     image:
       "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80",
-    color: "#F97316",
   },
 ];
 
@@ -106,7 +103,7 @@ function ProgramCard({
         {/* Icon */}
         <div className="px-6 -mt-6 mb-4 relative z-10">
           <div className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center">
-            <Icon size={20} className="text-orange-500" />
+            <Icon size={20} className="text-primary" />
           </div>
         </div>
 
@@ -120,7 +117,7 @@ function ProgramCard({
           </p>
           <a
             href="#"
-            className="group/link inline-flex items-center gap-1.5 text-orange-500 font-semibold text-sm hover:gap-2.5 transition-all"
+            className="group/link inline-flex items-center gap-1.5 text-primary font-semibold text-sm hover:gap-2.5 transition-all"
           >
             Learn More
             <ArrowRight
@@ -144,7 +141,7 @@ export default function Programs() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-orange-500 font-semibold text-sm tracking-widest uppercase mb-3"
+            className="text-primary font-semibold text-sm tracking-widest uppercase mb-3"
           >
             What We Do
           </motion.p>

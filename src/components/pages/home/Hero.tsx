@@ -11,6 +11,8 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const stats = [
   { value: 12000, suffix: "+", label: "People Trained" },
@@ -20,6 +22,7 @@ const stats = [
 ];
 
 function Counter({ target, suffix }: { target: number; suffix: string }) {
+  const router = useRouter();
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
@@ -44,7 +47,7 @@ function Counter({ target, suffix }: { target: number; suffix: string }) {
     <span ref={ref}>
       <span className="text-2xl font-heading font-bold text-white">
         {count.toLocaleString()}
-       {suffix}
+        {suffix}
       </span>
     </span>
   );
@@ -65,7 +68,7 @@ export default function Hero() {
   });
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
@@ -100,7 +103,7 @@ export default function Hero() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/60 to-slate-900/80" />
+        <div className="absolute inset-0 bg-linear-to-b from-slate-900/80 via-slate-900/60 to-slate-900/80" />
       </motion.div>
 
       {/* Content */}
@@ -111,9 +114,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/30 text-orange-300 text-sm font-medium px-4 py-1.5 rounded-full mb-6"
+            className="inline-flex items-center gap-2 bg-primary/20 border border-primary/30 text-primary text-sm font-medium px-4 py-1.5 rounded-full mb-6"
           >
-            <span className="w-2 h-2 bg-orange-400 rounded-full animate-pulse" />
+            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
             Changing Lives Since 2015
           </motion.div>
 
@@ -129,7 +132,7 @@ export default function Hero() {
             className="text-5xl md:text-6xl lg:text-7xl font-heading font-black text-white leading-[1.05] mb-6"
           >
             Empowering Communities Through{" "}
-            <span className="text-orange-400 italic">Skills</span> &amp;
+            <span className="text-primary italic">Skills</span> &amp;
             Opportunity
           </motion.h1>
 
@@ -152,15 +155,18 @@ export default function Hero() {
             className="flex flex-wrap items-center gap-4"
           >
             {/* Magnetic Donate Button */}
-            <motion.button
-              ref={btnRef}
+            <motion.div
               style={{ x: springX, y: springY, willChange: "transform" }}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3.5 rounded-full text-base transition-colors shadow-lg shadow-orange-500/30"
             >
-              Donate Now
-            </motion.button>
+              <Link
+                href="/programs"
+                className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3.5 rounded-full text-base transition-colors shadow-lg shadow-primary/30"
+              >
+                Apply Now
+              </Link>
+            </motion.div>
 
             {/* Programs button */}
             <motion.a

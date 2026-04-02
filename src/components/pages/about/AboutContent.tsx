@@ -123,7 +123,7 @@ export default function AboutContent() {
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >
-              <p className="text-orange-500 font-semibold text-sm tracking-widest uppercase mb-4">
+              <p className="text-primary font-semibold text-sm tracking-widest uppercase mb-4">
                 Who We Are
               </p>
               <h2 className="font-heading text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
@@ -143,8 +143,8 @@ export default function AboutContent() {
                 and community leaders who pay their growth forward.
               </p>
               <div className="grid grid-cols-2 gap-6">
-                <div className="bg-orange-50 rounded-2xl p-5">
-                  <div className="font-heading text-3xl font-black text-orange-500 mb-1">
+                <div className="bg-primary/5 rounded-2xl p-5">
+                  <div className="font-heading text-3xl font-black text-primary mb-1">
                     2015
                   </div>
                   <div className="text-sm text-slate-600">Year Founded</div>
@@ -165,7 +165,7 @@ export default function AboutContent() {
                 {
                   label: "Our Mission",
                   text: "To empower individuals in underserved communities with practical skills, mentorship, and employment connections that create economic independence and lasting community transformation.",
-                  color: "border-orange-400 bg-orange-50",
+                  color: "border-primary/60 bg-primary/5",
                 },
                 {
                   label: "Our Vision",
@@ -202,7 +202,7 @@ export default function AboutContent() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-orange-500 font-semibold text-sm tracking-widest uppercase mb-3"
+              className="text-primary font-semibold text-sm tracking-widest uppercase mb-3"
             >
               Our Values
             </motion.p>
@@ -227,8 +227,8 @@ export default function AboutContent() {
                   transition={{ delay: i * 0.08 }}
                   className="bg-white rounded-2xl p-7 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="w-11 h-11 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
-                    <Icon size={20} className="text-orange-500" />
+                  <div className="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                    <Icon size={20} className="text-primary" />
                   </div>
                   <h3 className="font-heading font-bold text-lg text-slate-900 mb-2">
                     {v.title}
@@ -251,7 +251,7 @@ export default function AboutContent() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-orange-500 font-semibold text-sm tracking-widest uppercase mb-3"
+              className="text-primary font-semibold text-sm tracking-widest uppercase mb-3"
             >
               Our Journey
             </motion.p>
@@ -279,7 +279,7 @@ export default function AboutContent() {
                   <div
                     className={`hidden md:block md:w-1/2 ${i % 2 === 0 ? "md:pr-12 text-right" : "md:pl-12 text-left"}`}
                   >
-                    <div className="font-heading text-4xl font-black text-orange-200">
+                    <div className="font-heading text-4xl font-black text-primary/30">
                       {m.year}
                     </div>
                     <h3 className="font-bold text-slate-900 text-lg mt-1">
@@ -291,7 +291,7 @@ export default function AboutContent() {
                   </div>
                   {/* Node */}
                   <div className="relative flex-shrink-0 flex items-start justify-center md:w-0">
-                    <div className="w-4 h-4 bg-orange-500 rounded-full border-4 border-white shadow md:absolute md:-translate-x-1/2 mt-1.5 z-10" />
+                    <div className="w-4 h-4 bg-primary rounded-full border-4 border-white shadow md:absolute md:-translate-x-1/2 mt-1.5 z-10" />
                   </div>
                   {/* Mobile / right side */}
                   <div
@@ -323,7 +323,7 @@ export default function AboutContent() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-orange-500 font-semibold text-sm tracking-widest uppercase mb-3"
+              className="text-primary font-semibold text-sm tracking-widest uppercase mb-3"
             >
               Leadership
             </motion.p>
@@ -359,7 +359,7 @@ export default function AboutContent() {
                   <h3 className="font-heading font-bold text-slate-900 text-lg">
                     {member.name}
                   </h3>
-                  <div className="text-orange-500 text-xs font-semibold mb-2">
+                  <div className="text-primary text-xs font-semibold mb-2">
                     {member.role}
                   </div>
                   <p className="text-slate-500 text-xs leading-relaxed">
@@ -373,7 +373,7 @@ export default function AboutContent() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-orange-500">
+      <section className="py-20 bg-primary">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -401,7 +401,7 @@ export default function AboutContent() {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-white text-orange-500 font-bold px-8 py-4 rounded-full hover:bg-orange-50 transition-colors text-lg"
+              className="inline-flex items-center gap-2 bg-white text-primary font-bold px-8 py-4 rounded-full hover:bg-primary/10 transition-colors text-lg"
             >
               Get In Touch <ArrowRight size={18} />
             </Link>

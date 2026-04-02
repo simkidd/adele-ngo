@@ -64,7 +64,7 @@ export default function Gallery() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-orange-500 font-semibold text-sm tracking-widest uppercase mb-3"
+            className="text-primary font-semibold text-sm tracking-widest uppercase mb-3"
           >
             Gallery
           </motion.p>

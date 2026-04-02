@@ -50,7 +50,7 @@ export default function AboutSection() {
             </motion.div>
 
             {/* Decorative accent */}
-            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-orange-500/10 rounded-2xl -z-10" />
+            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary/10 rounded-2xl -z-10" />
           </div>
 
           {/* RIGHT — Content */}
@@ -67,9 +67,9 @@ export default function AboutSection() {
                 whileInView={{ width: 4 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.2 }}
-                className="h-5 bg-orange-500 rounded-full flex-shrink-0"
+                className="h-5 bg-primary rounded-full flex-shrink-0"
               />
-              <span className="text-orange-500 font-semibold text-sm tracking-widest uppercase">
+              <span className="text-primary font-semibold text-sm tracking-widest uppercase">
                 Our Mission
               </span>
             </motion.div>
@@ -127,7 +127,7 @@ export default function AboutSection() {
                       delay: 0.4 + i * 0.1,
                     }}
                   >
-                    <CheckCircle2 size={20} className="text-orange-500 flex-shrink-0" />
+                    <CheckCircle2 size={20} className="text-primary flex-shrink-0" />
                   </motion.div>
                   <span className="text-slate-700 font-medium">{item}</span>
                 </motion.li>
