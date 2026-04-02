@@ -10,39 +10,37 @@ import {
   Send,
   CheckCircle2,
   Users,
-  Heart,
-  Handshake,
+  MessageSquare,
   BookOpen,
 } from "lucide-react";
 
 const enquiryTypes = [
   { icon: BookOpen, label: "Program Application", value: "application" },
-  { icon: Heart, label: "Donate / Fund a Cohort", value: "donation" },
-  { icon: Handshake, label: "Partnership / Employer", value: "partnership" },
   { icon: Users, label: "Volunteer / Mentor", value: "volunteer" },
+  { icon: MessageSquare, label: "General Enquiry", value: "general" },
 ];
 
 const offices = [
   {
-    city: "Accra HQ",
-    address: "17 Liberation Road, Madina, Greater Accra",
-    phone: "+233 30 270 6750",
-    email: "accra@adelefoundation.org",
+    city: "Lagos (HQ)",
+    address: "12 Adeola Odeku Street, Victoria Island, Lagos",
+    phone: "+234 801 234 5678",
+    email: "lagos@adelefoundation.org",
     hours: "Mon – Fri: 8:00 AM – 5:00 PM",
   },
   {
-    city: "Kumasi Office",
-    address: "22 Prempeh II Street, Adum, Ashanti Region",
-    phone: "+233 32 202 1198",
-    email: "kumasi@adelefoundation.org",
-    hours: "Mon – Fri: 8:00 AM – 4:30 PM",
+    city: "Abuja Office",
+    address: "Plot 45 Aminu Kano Crescent, Wuse 2, Abuja",
+    phone: "+234 809 876 5432",
+    email: "abuja@adelefoundation.org",
+    hours: "Mon – Fri: 8:00 AM – 5:00 PM",
   },
   {
-    city: "Takoradi Office",
-    address: "8 Market Circle, Effiakuma, Western Region",
-    phone: "+233 31 202 4437",
-    email: "takoradi@adelefoundation.org",
-    hours: "Mon – Thu: 8:00 AM – 4:00 PM",
+    city: "Port Harcourt Office",
+    address: "23 Aba Road, GRA Phase 2, Port Harcourt",
+    phone: "+234 703 456 7890",
+    email: "ph@adelefoundation.org",
+    hours: "Mon – Fri: 8:00 AM – 4:30 PM",
   },
 ];
 
@@ -107,8 +105,8 @@ export default function ContactContent() {
                       onClick={() => setEnquiry(type.value)}
                       className={`flex flex-col items-start gap-2 p-5 rounded-2xl border-2 transition-all text-left ${
                         enquiry === type.value
-                          ? "border-primary bg-primary/10"
-                          : "border-slate-200 hover:border-primary/40"
+                          ? "border-primary bg-primary/5"
+                          : "border-slate-200 hover:border-primary/20"
                       }`}
                     >
                       <Icon
@@ -137,11 +135,8 @@ export default function ContactContent() {
               <div className="space-y-4">
                 {[
                   { icon: Mail, text: "hello@adelefoundation.org" },
-                  { icon: Phone, text: "+233 30 270 6750" },
-                  {
-                    icon: MapPin,
-                    text: "17 Liberation Road, Madina, Accra, Ghana",
-                  },
+                  { icon: Phone, text: "+234 801 234 5678" },
+                  { icon: MapPin, text: "Victoria Island, Lagos, Nigeria" },
                   {
                     icon: Clock,
                     text: "Monday – Friday, 8:00 AM – 5:00 PM GMT",
@@ -263,7 +258,7 @@ export default function ContactContent() {
                         onChange={(e) =>
                           setForm({ ...form, phone: e.target.value })
                         }
-                        placeholder="+234 ..."
+                        placeholder="+234 801 234 5678"
                         className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary transition"
                       />
                     </div>
@@ -320,7 +315,7 @@ export default function ContactContent() {
                       disabled={loading}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full bg-primary hover:bg-primary/90 disabled:opacity-70 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-colors text-sm cursor-pointer disabled:pointer-events-none"
+                      className="w-full bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-70 font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all text-sm cursor-pointer"
                     >
                       {loading ? (
                         <span className="flex items-center gap-2">
@@ -415,40 +410,6 @@ export default function ContactContent() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Donate strip */}
-      <section className="py-16 bg-primary">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="font-heading text-3xl font-black text-white mb-3"
-          >
-            Ready to Fund a Future?
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-primary/20 mb-6"
-          >
-            Every donation directly funds training, tools, and mentorship for
-            someone who needs it.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <button className="bg-white text-primary font-bold px-10 py-4 rounded-full text-lg hover:bg-primary/10 transition-colors">
-              Donate Now
-            </button>
-          </motion.div>
         </div>
       </section>
     </div>

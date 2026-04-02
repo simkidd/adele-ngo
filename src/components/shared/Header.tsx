@@ -11,6 +11,8 @@ import Logo from "./Logo";
 const links = [
   { label: "Programs", href: "/programs" },
   { label: "About", href: "/about" },
+  // { label: "Blog", href: "/blog" },
+  // { label: "Events", href: "/events" },
   { label: "Stories", href: "/stories" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
@@ -77,7 +79,6 @@ export default function Header() {
               </Link>
             );
           })}
-        
         </div>
 
         {/* Mobile toggle */}
@@ -114,7 +115,6 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
-             
             </div>
           </motion.div>
         )}

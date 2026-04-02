@@ -80,7 +80,7 @@ export default function Testimonials() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 + 0.2 }}
-                className="text-orange-200 mb-4"
+                className="text-primary/20 mb-4"
               >
                 <Quote size={40} className="fill-primary/20 stroke-primary/30" />
               </motion.div>

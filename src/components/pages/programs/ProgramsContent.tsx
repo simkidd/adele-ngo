@@ -23,145 +23,145 @@ const programs = [
     id: "digital-literacy",
     icon: Monitor,
     title: "Digital Literacy",
-    tagline: "Navigate the digital world with confidence",
+    tagline: "Build real digital skills for today’s economy",
     description:
-      "Our Digital Literacy program equips participants with foundational to advanced computer skills. From basic device use to professional software, participants graduate ready to work in digital-first environments — or launch their own online ventures.",
+      "Our Digital Literacy program equips participants with practical computer and internet skills for work, business, and everyday life. From basic device use to productivity tools and digital income opportunities, participants gain the confidence to learn, work, and earn in a digital world.",
     duration: "12 Weeks",
     cohortSize: "25 Participants",
-    certification: "ICT Proficiency Certificate",
+    certification: "Digital Skills Certificate",
     image:
       "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=900&q=80",
-    color: "from-blue-500 to-indigo-600",
-    lightColor: "bg-blue-50",
-    accentColor: "text-blue-600",
+    color: "from-primary to-secondary",
+    lightColor: "bg-primary/10",
+    accentColor: "text-primary",
     curriculum: [
-      "Computer basics & operating systems",
-      "Microsoft Office Suite (Word, Excel, PowerPoint)",
-      "Internet skills, research & digital safety",
-      "Email communication & professional etiquette",
-      "Introduction to coding & web basics",
-      "Social media for business & personal branding",
+      "Computer basics & internet navigation",
+      "Microsoft Office & productivity tools",
+      "Email & professional communication",
+      "Online research & digital safety",
+      "Introduction to freelancing platforms",
+      "Using social media and AI tools for business",
     ],
     outcomes: [
-      "85% secure employment within 3 months",
-      "60% report income increase",
-      "40% start online businesses",
+      "Participants gain practical digital confidence",
+      "Better access to jobs, remote work, and freelancing",
+      "Improved readiness for online business opportunities",
     ],
   },
   {
     id: "entrepreneurship",
     icon: TrendingUp,
     title: "Entrepreneurship",
-    tagline: "Turn ideas into thriving businesses",
+    tagline: "Turn your idea into a sustainable business",
     description:
-      "This intensive program transforms aspiring entrepreneurs into business owners. Participants learn to ideate, validate, and launch ventures — backed by mentorship from successful local business leaders and access to our partner network.",
+      "This program helps aspiring and early-stage entrepreneurs develop the mindset, structure, and practical skills needed to build and grow a business. Participants learn how to validate ideas, attract customers, manage money, and position their ventures for long-term success.",
     duration: "16 Weeks",
     cohortSize: "20 Participants",
-    certification: "Business Development Certificate",
+    certification: "Entrepreneurship Certificate",
     image:
       "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=900&q=80",
-    color: "from-orange-500 to-red-500",
+    color: "from-primary to-accent",
     lightColor: "bg-primary/10",
-    accentColor: "text-orange-600",
+    accentColor: "text-primary",
     curriculum: [
-      "Business ideation & market research",
-      "Business plan development",
-      "Financial literacy & budgeting",
+      "Business idea validation",
+      "Pricing, budgeting & record keeping",
       "Marketing & customer acquisition",
-      "Legal structures & registration",
-      "Pitching to investors & grant writing",
+      "Branding and social media for business",
+      "Business registration & compliance basics",
+      "Pitching and accessing funding opportunities",
     ],
     outcomes: [
-      "70% launch businesses within 6 months",
-      "Avg. 3 jobs created per graduate",
-      "₵5,000 avg. seed funding secured",
+      "Participants leave with a clearer business roadmap",
+      "Improved confidence in managing and growing a business",
+      "Greater readiness for grants, funding, and market access",
     ],
   },
   {
     id: "culinary-arts",
     icon: ChefHat,
     title: "Culinary Arts",
-    tagline: "Master the art and business of food",
+    tagline: "Turn your passion for food into income",
     description:
-      "More than cooking — our Culinary Arts program covers professional kitchen skills, food safety, catering operations, and how to build a food business. Graduates work in restaurants, hotels, and catering companies, or run their own food ventures.",
+      "More than cooking, our Culinary Arts program teaches kitchen discipline, food safety, menu planning, and the business side of food. Graduates are prepared for opportunities in catering, hospitality, food service, and self-employment.",
     duration: "14 Weeks",
     cohortSize: "18 Participants",
-    certification: "Professional Culinary Certificate",
+    certification: "Culinary Skills Certificate",
     image:
       "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=900&q=80",
-    color: "from-amber-500 to-orange-600",
-    lightColor: "bg-amber-50",
-    accentColor: "text-amber-600",
+    color: "from-secondary to-primary",
+    lightColor: "bg-secondary/10",
+    accentColor: "text-secondary",
     curriculum: [
-      "Food hygiene & kitchen safety (HACCP)",
-      "West African & international cuisine techniques",
-      "Baking & pastry fundamentals",
-      "Catering & event planning",
-      "Menu development & costing",
-      "Food entrepreneurship & social media marketing",
+      "Food hygiene & kitchen safety",
+      "Nigerian and continental dishes",
+      "Baking & pastry basics",
+      "Menu planning and food costing",
+      "Catering operations & event service",
+      "Building a small food business",
     ],
     outcomes: [
-      "90% employment rate",
-      "Partners with 12 hospitality employers",
-      "30% open catering businesses",
+      "Hands-on culinary and food service skills",
+      "Readiness for catering, hospitality, and food ventures",
+      "Better understanding of how to earn through food business",
     ],
   },
   {
     id: "tailoring",
     icon: Scissors,
-    title: "Tailoring & Textiles",
-    tagline: "Create fashion that transforms lives",
+    title: "Tailoring & Fashion Design",
+    tagline: "Create fashion and build your brand",
     description:
-      "From hand stitching to industrial sewing machines, participants master the craft of tailoring and fashion production. The program also covers fashion design principles and running a successful tailoring business.",
+      "From sewing fundamentals to garment finishing, this program helps participants build strong tailoring skills while also learning how to run a fashion business. It is designed for those who want to work independently, serve clients, or launch a small brand.",
     duration: "16 Weeks",
     cohortSize: "22 Participants",
-    certification: "Fashion & Textile Skills Certificate",
+    certification: "Fashion & Tailoring Certificate",
     image:
       "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80",
-    color: "from-purple-500 to-pink-600",
-    lightColor: "bg-purple-50",
-    accentColor: "text-purple-600",
+    color: "from-primary to-secondary",
+    lightColor: "bg-primary/10",
+    accentColor: "text-primary",
     curriculum: [
-      "Hand & machine sewing techniques",
-      "Pattern making & garment construction",
-      "African print & kente design principles",
-      "Alterations & custom fitting",
-      "Textile sourcing & cost management",
-      "Building a tailoring clientele",
+      "Hand and machine sewing techniques",
+      "Pattern drafting & garment construction",
+      "Nigerian fabrics (Ankara, Adire) & design principles",
+      "Alterations, fitting & finishing",
+      "Textile sourcing and pricing",
+      "Fashion branding and client management",
     ],
     outcomes: [
-      "80% self-employed within 4 months",
-      "Average 5 clients in first month",
-      "₵3,500 avg. monthly income",
+      "Participants develop practical tailoring skills",
+      "Improved ability to earn from custom orders",
+      "Stronger foundation for building a fashion business",
     ],
   },
   {
     id: "carpentry",
     icon: Hammer,
     title: "Carpentry & Woodwork",
-    tagline: "Build with skill, build for life",
+    tagline: "Learn a trade and build a future",
     description:
-      "Our Carpentry program provides hands-on training in woodworking, furniture making, and construction carpentry. Participants graduate with both a solid trade skill and the business knowledge to operate their own workshops.",
+      "Our Carpentry & Woodwork program provides hands-on training in furniture making, joinery, finishing, and workshop safety. Participants gain practical trade skills alongside the knowledge needed to manage jobs, clients, and income opportunities.",
     duration: "18 Weeks",
     cohortSize: "16 Participants",
-    certification: "Carpentry & Woodwork Certificate",
+    certification: "Carpentry Certificate",
     image:
       "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=900&q=80",
-    color: "from-green-600 to-teal-600",
-    lightColor: "bg-green-50",
-    accentColor: "text-green-700",
+    color: "from-primary to-secondary",
+    lightColor: "bg-primary/10",
+    accentColor: "text-primary",
     curriculum: [
-      "Woodwork safety & tool mastery",
-      "Reading blueprints & construction plans",
-      "Furniture design & joinery",
-      "Cabinet making & finishing techniques",
-      "Construction carpentry & site work",
+      "Tool handling & workshop safety",
+      "Basic furniture making and joinery",
+      "Measurements, cutting & assembly",
+      "Wood finishing techniques",
+      "Introductory construction carpentry",
       "Workshop management & client relations",
     ],
     outcomes: [
-      "75% employed in construction sector",
-      "Partners with 8 construction firms",
-      "25% open own workshops",
+      "Participants gain practical woodworking skills",
+      "Better readiness for work and self-employment",
+      "Stronger foundation for running a small workshop",
     ],
   },
 ];
@@ -181,10 +181,9 @@ function ProgramCard({
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg transition-shadow duration-300"
+      transition={{ duration: 0.6, delay: index * 0.08 }}
+      className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-lg"
     >
-      {/* Image */}
       <div className="relative h-56 overflow-hidden">
         <Image
           src={program.image}
@@ -194,27 +193,23 @@ function ProgramCard({
           loading="lazy"
         />
         <div
-          className={`absolute inset-0 bg-gradient-to-t ${program.color} opacity-60`}
+          className={`absolute inset-0 bg-gradient-to-t ${program.color} opacity-70`}
         />
         <div className="absolute bottom-4 left-5 flex items-center gap-3">
-          <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
             <Icon size={20} className="text-white" />
           </div>
           <div>
-            <div className="text-white font-heading font-bold text-xl leading-none">
+            <div className="font-heading text-xl font-bold leading-none text-white">
               {program.title}
             </div>
-            <div className="text-white/80 text-xs mt-0.5">
-              {program.tagline}
-            </div>
+            <div className="mt-0.5 text-xs text-white/85">{program.tagline}</div>
           </div>
         </div>
       </div>
 
-      {/* Body */}
       <div className="p-6">
-        {/* Meta chips */}
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="mb-4 flex flex-wrap gap-2">
           {[
             { icon: Clock, text: program.duration },
             { icon: Users, text: program.cohortSize },
@@ -222,7 +217,7 @@ function ProgramCard({
           ].map(({ icon: MetaIcon, text }) => (
             <span
               key={text}
-              className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full ${program.lightColor} ${program.accentColor}`}
+              className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium ${program.lightColor} ${program.accentColor}`}
             >
               <MetaIcon size={11} />
               {text}
@@ -230,27 +225,25 @@ function ProgramCard({
           ))}
         </div>
 
-        <p className="text-slate-600 text-sm leading-relaxed mb-4">
+        <p className="mb-4 text-sm leading-relaxed text-muted-foreground">
           {program.description}
         </p>
 
-        {/* Outcomes */}
-        <div className="space-y-1.5 mb-4">
+        <div className="mb-4 space-y-2">
           {program.outcomes.map((o) => (
             <div key={o} className="flex items-start gap-2">
               <CheckCircle2
                 size={14}
                 className={`${program.accentColor} mt-0.5 flex-shrink-0`}
               />
-              <span className="text-xs text-slate-600">{o}</span>
+              <span className="text-xs text-muted-foreground">{o}</span>
             </div>
           ))}
         </div>
 
-        {/* Curriculum accordion */}
         <button
           onClick={() => setExpanded(!expanded)}
-          className={`w-full flex items-center justify-between text-sm font-semibold py-3 border-t border-slate-100 ${program.accentColor}`}
+          className={`flex w-full items-center justify-between border-t border-border py-3 text-sm font-semibold ${program.accentColor}`}
         >
           View Curriculum
           <motion.div
@@ -275,18 +268,23 @@ function ProgramCard({
                   key={item}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  className="flex items-start gap-2 text-sm text-slate-600"
+                  transition={{ delay: i * 0.04 }}
+                  className="flex items-start gap-2 text-sm text-muted-foreground"
                 >
-                  <span
-                    className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 ${program.accentColor.replace("text", "bg")}`}
-                  />
+                  <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
                   {item}
                 </motion.li>
               ))}
             </motion.ul>
           )}
         </AnimatePresence>
+
+        <Link
+          href={`/programs/${program.id}`}
+          className={`mt-4 flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-bold transition-all hover:gap-3 hover:opacity-90 ${program.lightColor} ${program.accentColor}`}
+        >
+          View Program & Register <ArrowRight size={14} />
+        </Link>
       </div>
     </motion.div>
   );
@@ -294,43 +292,42 @@ function ProgramCard({
 
 export default function ProgramsContent() {
   return (
-    <div className="bg-slate-50">
-      {/* Intro */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <div className="bg-muted/40">
+      <section className="bg-background py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid items-center gap-16 lg:grid-cols-2">
             <div>
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="font-heading text-4xl font-black text-slate-900 mb-6"
+                className="font-heading mb-6 text-4xl font-black text-foreground"
               >
-                Practical Skills. Real Results. Lasting Change.
+                Practical Skills. Real Support. Lasting Impact.
               </motion.h2>
+
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="text-slate-600 leading-relaxed mb-4"
+                className="mb-4 leading-relaxed text-muted-foreground"
               >
-                All Adele programs are developed in partnership with industry
-                employers to ensure graduates meet real-world hiring standards.
-                We combine classroom instruction, hands-on workshops, and
-                mentorship from working professionals.
+                All Adele programs are designed to equip young Nigerians with
+                practical, income-generating skills.
               </motion.p>
+
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.15 }}
-                className="text-slate-600 leading-relaxed mb-8"
+                className="mb-8 leading-relaxed text-muted-foreground"
               >
-                Participants also receive ongoing support after graduation —
-                from job placement assistance to access to our alumni network
-                and continued learning resources.
+                We combine hands-on training, mentorship, and real-world
+                exposure to help participants move from learning to earning.
               </motion.p>
+
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -339,18 +336,19 @@ export default function ProgramsContent() {
               >
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold px-7 py-3.5 rounded-full transition-all hover:scale-105"
+                  className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-primary-foreground transition-all hover:scale-105 hover:bg-primary/90"
                 >
                   Apply for a Program <ArrowRight size={16} />
                 </Link>
               </motion.div>
             </div>
+
             <div className="grid grid-cols-2 gap-4">
               {[
                 { value: "5", label: "Skill Tracks" },
-                { value: "12 wks", label: "Avg. Duration" },
-                { value: "83%", label: "Employment Rate" },
-                { value: "2,400+", label: "Graduates" },
+                { value: "12–18", label: "Weeks of Training" },
+                { value: "Hands-on", label: "Learning Approach" },
+                { value: "Ongoing", label: "Post-Training Support" },
               ].map((s, i) => (
                 <motion.div
                   key={s.label}
@@ -358,12 +356,12 @@ export default function ProgramsContent() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="bg-slate-50 rounded-2xl p-6 text-center"
+                  className="rounded-2xl bg-card p-6 text-center shadow-sm border border-border"
                 >
-                  <div className="font-heading text-3xl font-black text-primary mb-1">
+                  <div className="font-heading mb-1 text-3xl font-black text-primary">
                     {s.value}
                   </div>
-                  <div className="text-sm text-slate-500">{s.label}</div>
+                  <div className="text-sm text-muted-foreground">{s.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -371,18 +369,18 @@ export default function ProgramsContent() {
         </div>
       </section>
 
-      {/* Program Cards */}
       <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="mx-auto max-w-7xl px-6">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-heading text-3xl font-black text-slate-900 mb-12 text-center"
+            className="font-heading mb-12 text-center text-3xl font-black text-foreground"
           >
             Choose Your Path
           </motion.h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {programs.map((program, i) => (
               <ProgramCard key={program.id} program={program} index={i} />
             ))}
@@ -390,48 +388,49 @@ export default function ProgramsContent() {
         </div>
       </section>
 
-      {/* How to apply */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-6 text-center">
+      <section className="bg-background py-20">
+        <div className="mx-auto max-w-4xl px-6 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-heading text-4xl font-black text-slate-900 mb-4"
+            className="font-heading mb-4 text-4xl font-black text-foreground"
           >
             How to Apply
           </motion.h2>
+
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-slate-500 mb-16"
+            className="mb-16 text-muted-foreground"
           >
-            Joining an Adele program is straightforward. Here&apos;s what to
+            Joining an Adele program is simple and accessible. Here’s what to
             expect.
           </motion.p>
-          <div className="grid md:grid-cols-4 gap-8">
+
+          <div className="grid gap-8 md:grid-cols-4">
             {[
               {
                 step: "01",
                 title: "Submit Application",
-                desc: "Fill out our short online form with your background and program interest.",
+                desc: "Complete our short application form with your details and program interest.",
               },
               {
                 step: "02",
-                title: "Screening Interview",
-                desc: "A brief call with our admissions team to assess fit and motivation.",
+                title: "Screening Review",
+                desc: "Our team reviews your application and may contact you for a short conversation.",
               },
               {
                 step: "03",
                 title: "Acceptance & Onboarding",
-                desc: "Receive your acceptance letter, program materials, and orientation date.",
+                desc: "Successful applicants receive onboarding details, program information, and orientation guidance.",
               },
               {
                 step: "04",
                 title: "Begin Training",
-                desc: "Start your program with your cohort and dedicated program facilitator.",
+                desc: "Start learning with your cohort, facilitator, and support community.",
               },
             ].map((s, i) => (
               <motion.div
@@ -442,16 +441,17 @@ export default function ProgramsContent() {
                 transition={{ delay: i * 0.1 }}
                 className="text-center"
               >
-                <div className="w-12 h-12 bg-primary text-white font-heading font-black text-lg rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary font-heading text-lg font-black text-primary-foreground">
                   {s.step}
                 </div>
-                <h3 className="font-semibold text-slate-900 mb-2">{s.title}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">
+                <h3 className="mb-2 font-semibold text-foreground">{s.title}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   {s.desc}
                 </p>
               </motion.div>
             ))}
           </div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -461,7 +461,7 @@ export default function ProgramsContent() {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold px-10 py-4 rounded-full text-lg transition-all hover:scale-105 shadow-lg shadow-primary/25"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-10 py-4 text-lg font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:scale-105 hover:bg-primary/90"
             >
               Apply Now <ArrowRight size={18} />
             </Link>

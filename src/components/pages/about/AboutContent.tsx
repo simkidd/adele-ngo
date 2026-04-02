@@ -297,7 +297,7 @@ export default function AboutContent() {
                   <div
                     className={`md:w-1/2 ${i % 2 === 0 ? "md:pl-12" : "md:pr-12 md:text-right"}`}
                   >
-                    <div className="font-heading text-3xl font-black text-orange-200 md:hidden">
+                    <div className="font-heading text-3xl font-black text-primary/20 md:hidden">
                       {m.year}
                     </div>
                     <h3 className="font-bold text-slate-900 text-lg mt-1 md:hidden">
@@ -379,20 +379,22 @@ export default function AboutContent() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-heading text-4xl font-black text-white mb-4"
+            className="font-heading text-4xl font-black text-primary-foreground mb-4"
           >
             Partner With Us
           </motion.h2>
+
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-orange-100 mb-8 text-lg"
+            className="text-primary-foreground/80 mb-8 text-lg leading-relaxed"
           >
-            Whether you&pos;re an employer, donor, government body, or community
-            leader — we&apos&apos;d love to explore how we can work together.
+            Whether you&apos;re an employer, donor, government body, or community
+            leader — we’d love to explore how we can work together.
           </motion.p>
+
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -401,7 +403,7 @@ export default function AboutContent() {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-white text-primary font-bold px-8 py-4 rounded-full hover:bg-primary/10 transition-colors text-lg"
+              className="inline-flex items-center gap-2 bg-background text-primary font-bold px-8 py-4 rounded-full text-lg transition-all hover:scale-105 hover:bg-background/90 shadow-lg"
             >
               Get In Touch <ArrowRight size={18} />
             </Link>
