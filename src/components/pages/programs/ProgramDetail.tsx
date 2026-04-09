@@ -461,7 +461,7 @@ export default function ProgramDetail({ program }: { program: Program }) {
             Register for This Program
           </motion.button>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent z-10" />
+        {/* <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent z-10" /> */}
       </section>
 
       {/* Content */}
