@@ -9,42 +9,42 @@ const images = [
   {
     src: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=800&q=80",
     alt: "Graduation ceremony",
-    caption: "Graduation Ceremony",
+    caption: "Celebrating program graduates ready for new opportunities",
     height: "h-64",
     rotation: -1.5,
   },
   {
     src: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80",
-    alt: "Classroom training",
-    caption: "Digital Literacy Training",
+    alt: "Digital skills training session",
+    caption: "Participants gaining practical digital skills",
     height: "h-48",
     rotation: 1,
   },
   {
     src: "https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=800&q=80",
-    alt: "Community meeting",
-    caption: "Community Gathering",
+    alt: "Community engagement session",
+    caption: "Engaging communities through empowerment initiatives",
     height: "h-72",
     rotation: -0.8,
   },
   {
     src: "https://images.unsplash.com/photo-1529390079861-591de354faf5?w=800&q=80",
     alt: "Skills workshop",
-    caption: "Skills Workshop",
+    caption: "Hands-on learning experience during training sessions",
     height: "h-48",
     rotation: 1.2,
   },
   {
     src: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80",
     alt: "Training session",
-    caption: "Hands-on Training",
+    caption: "Facilitators guiding participants through practical sessions",
     height: "h-56",
     rotation: -1,
   },
   {
     src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80",
-    alt: "Team collaboration",
-    caption: "Mentor Sessions",
+    alt: "Mentorship session",
+    caption: "Mentorship sessions focused on growth and direction",
     height: "h-44",
     rotation: 0.7,
   },
@@ -66,7 +66,7 @@ export default function Gallery() {
             viewport={{ once: true }}
             className="text-primary font-semibold text-sm tracking-widest uppercase mb-3"
           >
-            Gallery
+            Our Impact in Action
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -74,7 +74,7 @@ export default function Gallery() {
             viewport={{ once: true }}
             className="font-heading text-4xl md:text-5xl font-black text-slate-900 mb-4"
           >
-            Training Highlights
+            Real Moments from Our Programs
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -83,7 +83,7 @@ export default function Gallery() {
             transition={{ delay: 0.1 }}
             className="text-slate-500"
           >
-            Moments from our programs across communities.
+           A glimpse into the lives we are impacting through training, mentorship, and community-driven initiatives.
           </motion.p>
         </div>
 
@@ -101,7 +101,7 @@ export default function Gallery() {
             >
               <Image
                 src={img.src}
-                alt={img.alt}
+                alt="Digital skills training session in Nigeria"
                 fill
                 className="object-cover transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 grayscale-0 md:grayscale group-hover:grayscale-0"
                 loading="lazy"

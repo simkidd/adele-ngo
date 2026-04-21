@@ -4,28 +4,29 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight, Lightbulb, Heart, Globe } from "lucide-react";
+import Link from "next/link";
 
 const programs = [
   {
-    title: "Skills Training",
+    title: "Skills Development",
     description:
-      "Digital literacy, entrepreneurship training led to equipped challenges for real-world success.",
+      "We provide practical digital and vocational training that equips individuals with in-demand skills for employment, freelancing, and entrepreneurship.",
     icon: Lightbulb,
     image:
       "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80",
   },
   {
-    title: "Support Services",
+    title: "Mentorship & Support",
     description:
-      "Counseling, mentorship, and resources to help people navigate challenges and thrive.",
+      "Through mentorship, guidance, and access to resources, we support individuals in overcoming challenges and building confidence to succeed.",
     icon: Heart,
     image:
       "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?w=800&q=80",
   },
   {
-    title: "Opportunity Access",
+    title: "Access to Opportunities",
     description:
-      "Job resources, grants, and networks that open doors to meaningful opportunities.",
+      "We connect participants to job opportunities, funding, and networks that open doors to sustainable income and long-term growth.",
     icon: Globe,
     image:
       "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80",
@@ -93,7 +94,7 @@ function ProgramCard({
           >
             <Image
               src={program.image}
-              alt={program.title}
+              alt={`${program.title} program by Adele Empowerment Foundation`}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
@@ -115,8 +116,8 @@ function ProgramCard({
           <p className="text-slate-600 text-sm leading-relaxed mb-4">
             {program.description}
           </p>
-          <a
-            href="#"
+          <Link
+            href="/programs"
             className="group/link inline-flex items-center gap-1.5 text-primary font-semibold text-sm hover:gap-2.5 transition-all"
           >
             Learn More
@@ -124,7 +125,7 @@ function ProgramCard({
               size={14}
               className="transition-transform group-hover/link:translate-x-1"
             />
-          </a>
+          </Link>
         </div>
       </motion.div>
     </motion.div>
@@ -152,7 +153,7 @@ export default function Programs() {
             transition={{ delay: 0.1 }}
             className="font-heading text-4xl md:text-5xl font-black text-slate-900 mb-4"
           >
-            Our Programs
+            Programs That Create Real Impact
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -161,8 +162,9 @@ export default function Programs() {
             transition={{ delay: 0.2 }}
             className="text-slate-500 max-w-xl mx-auto"
           >
-            Comprehensive support for lasting change in individuals and
-            communities.
+            We design programs that equip individuals with practical skills,
+            ongoing support, and access to real opportunities — creating lasting
+            change in their lives and communities.
           </motion.p>
         </div>
 

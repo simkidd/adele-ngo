@@ -6,16 +6,19 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 
 const checklist = [
-  "Practical, hands-on training programs",
-  "Personalized mentorship and support",
-  "Direct connections to employers",
-  "Ongoing community engagement",
+  "Hands-on training focused on real-world skills",
+  "Mentorship and guidance tailored to each individual",
+  "Access to job opportunities, funding, and networks",
+  "Community support that continues beyond training",
 ];
 
 export default function AboutSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
-  const checklistInView = useInView(sectionRef, { once: true, margin: "-80px" });
+  const checklistInView = useInView(sectionRef, {
+    once: true,
+    margin: "-80px",
+  });
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -32,10 +35,15 @@ export default function AboutSection() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* LEFT — Image with parallax & clip-path reveal */}
-          <div ref={imageRef} className="relative h-[500px] rounded-2xl overflow-hidden">
+          <div
+            ref={imageRef}
+            className="relative h-[500px] rounded-2xl overflow-hidden"
+          >
             <motion.div
               initial={{ clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)" }}
-              whileInView={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
+              whileInView={{
+                clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+              }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
               style={{ y: imageY, willChange: "transform" }}
@@ -43,7 +51,7 @@ export default function AboutSection() {
             >
               <Image
                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80"
-                alt="Training in progress"
+                alt="Adele Empowerment Foundation training session"
                 fill
                 className="object-cover"
               />
@@ -70,7 +78,7 @@ export default function AboutSection() {
                 className="h-5 bg-primary rounded-full flex-shrink-0"
               />
               <span className="text-primary font-semibold text-sm tracking-widest uppercase">
-                Our Mission
+                Who We Are
               </span>
             </motion.div>
 
@@ -81,7 +89,7 @@ export default function AboutSection() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-heading text-4xl md:text-5xl font-black text-slate-900 leading-tight mb-6"
             >
-              Building Brighter Futures Together
+              Creating Opportunities That Change Lives
             </motion.h2>
 
             <motion.p
@@ -91,9 +99,11 @@ export default function AboutSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-slate-600 leading-relaxed mb-3"
             >
-              Since 2015, Adele Empowerment Foundation has been dedicated to transforming lives
-              through education and skills development. We believe everyone deserves access to
-              opportunities that help them thrive.
+              Adele Empowerment Foundation is a non-profit organization
+              committed to empowering individuals through skills development,
+              economic opportunities, and community-driven initiatives. We focus
+              on helping people move from potential to real, sustainable
+              outcomes.
             </motion.p>
 
             <motion.p
@@ -103,8 +113,9 @@ export default function AboutSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-slate-600 leading-relaxed mb-8"
             >
-              Our approach combines practical training with personalized support, ensuring each
-              individual has the tools they need to succeed in their chosen path.
+              Our approach goes beyond training. We combine practical skills,
+              mentorship, and access to opportunities — ensuring every
+              individual is equipped not just to learn, but to earn and grow.
             </motion.p>
 
             {/* Checklist */}
@@ -127,7 +138,10 @@ export default function AboutSection() {
                       delay: 0.4 + i * 0.1,
                     }}
                   >
-                    <CheckCircle2 size={20} className="text-primary flex-shrink-0" />
+                    <CheckCircle2
+                      size={20}
+                      className="text-primary flex-shrink-0"
+                    />
                   </motion.div>
                   <span className="text-slate-700 font-medium">{item}</span>
                 </motion.li>

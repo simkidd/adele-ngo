@@ -134,9 +134,9 @@ export default function ContactContent() {
               {/* Contact info */}
               <div className="space-y-4">
                 {[
-                  { icon: Mail, text: "hello@adelefoundation.org" },
-                  { icon: Phone, text: "+234 801 234 5678" },
-                  { icon: MapPin, text: "Victoria Island, Lagos, Nigeria" },
+                  { icon: Mail, text: "adeleempowermentfoundation@gmail.com" },
+                  { icon: Phone, text: "+234 813 303 9718" },
+                  { icon: MapPin, text: "Port Harcourt, Nigeria" },
                   {
                     icon: Clock,
                     text: "Monday – Friday, 8:00 AM – 5:00 PM GMT",

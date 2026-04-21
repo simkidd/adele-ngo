@@ -15,10 +15,10 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const stats = [
-  { value: 12000, suffix: "+", label: "People Trained" },
-  { value: 68, suffix: "%", label: "Employment Rate" },
-  { value: 150, suffix: "+", label: "Partner Orgs" },
-  { value: 45, suffix: "+", label: "Communities Served" },
+  { value: 500, suffix: "+", label: "Individuals Trained" },
+  { value: 100, suffix: "+", label: "Empowered Economically" },
+  { value: 10, suffix: "+", label: "Communities Reached" },
+  { value: 20, suffix: "+", label: "Programs Conducted" },
 ];
 
 function Counter({ target, suffix }: { target: number; suffix: string }) {
@@ -98,7 +98,7 @@ export default function Hero() {
       >
         <Image
           src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=1600&q=80"
-          alt="Community empowerment"
+          alt="Youth empowerment training session in Nigeria"
           fill
           className="object-cover"
           priority
@@ -117,7 +117,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 bg-primary/20 border border-primary/30 text-primary text-sm font-medium px-4 py-1.5 rounded-full mb-6"
           >
             <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            Changing Lives Since 2015
+            Changing Lives Since 2022
           </motion.div>
 
           {/* Headline */}
@@ -131,9 +131,9 @@ export default function Hero() {
             }}
             className="text-5xl md:text-6xl lg:text-7xl font-heading font-black text-white leading-[1.05] mb-6"
           >
-            Empowering Communities Through{" "}
-            <span className="text-primary italic">Skills</span> &amp;
-            Opportunity
+            Empowering Youth, Women,{" "}
+            <span className="text-primary italic">and</span> Communities Across
+            Nigeria
           </motion.h1>
 
           {/* Body */}
@@ -143,8 +143,9 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.5 }}
             className="text-lg text-white/75 leading-relaxed mb-10 max-w-xl"
           >
-            We provide training, mentorship, and resources to help individuals
-            build sustainable futures and transform their communities.
+            We equip individuals with practical skills, real opportunities, and
+            the support they need to become financially independent and build
+            better futures for themselves and their communities.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -164,18 +165,18 @@ export default function Hero() {
                 href="/programs"
                 className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-3.5 rounded-full text-base transition-colors shadow-lg shadow-primary/30"
               >
-                Apply Now
+                Join a Program
               </Link>
             </motion.div>
 
             {/* Programs button */}
             <motion.a
-              href="#programs"
+              href="#impact"
               className="group flex items-center gap-2 text-white/90 hover:text-white font-semibold px-7 py-3.5 rounded-full transition-all bg-white/10 backdrop-blur-sm hover:bg-white/20"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              Our Programs
+              See Our Impact
               <ArrowRight
                 size={16}
                 className="transition-transform group-hover:translate-x-1"

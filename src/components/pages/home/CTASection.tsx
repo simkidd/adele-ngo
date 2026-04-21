@@ -1,26 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Heart, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
+import { Handshake, Heart } from "lucide-react";
 import Link from "next/link";
 
 export default function CTASection() {
-  const [ripples, setRipples] = useState<
-    { x: number; y: number; id: number }[]
-  >([]);
-
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const id = Date.now();
-    setRipples((prev) => [...prev, { x, y, id }]);
-    setTimeout(() => {
-      setRipples((prev) => prev.filter((r) => r.id !== id));
-    }, 800);
-  };
-
   return (
     <section id="cta" className="relative py-28 bg-slate-900 overflow-hidden">
       {/* Animated gradient orb */}
@@ -70,7 +54,7 @@ export default function CTASection() {
           transition={{ duration: 0.7 }}
           className="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6"
         >
-          Ready to Change Your Life?
+          Be Part of Creating Real Impact
         </motion.h2>
 
         <motion.p
@@ -80,8 +64,8 @@ export default function CTASection() {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="text-slate-400 text-lg leading-relaxed mb-10"
         >
-          Applications for our upcoming cohorts are now open. Take the first
-          step — choose a program and register today.
+          Join our programs, support our mission, or partner with us to create
+          opportunities for individuals and communities across Nigeria.
         </motion.p>
 
         {/* Button with ripple */}
@@ -95,8 +79,36 @@ export default function CTASection() {
             href="/programs"
             className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold text-lg px-10 py-4 rounded-full transition-colors shadow-xl shadow-primary/30"
           >
-            Apply for a Program
+            Join a Program
           </Link>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="mt-4 flex flex-wrap items-center justify-center gap-4"
+        >
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              href="/donate"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition gap-2"
+            >
+              Support Our Mission
+              <Heart size={16} />
+            </Link>
+          </motion.div>
+
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition gap-2"
+            >
+              Partner With Us
+              <Handshake size={16} />
+            </Link>
+          </motion.div>
         </motion.div>
 
         {/* Trust badge */}
@@ -107,7 +119,8 @@ export default function CTASection() {
           transition={{ delay: 0.5 }}
           className="mt-6 flex items-center justify-center gap-2 text-slate-500 text-sm"
         >
-          Training is free for all accepted participants.
+          Our programs are designed to be accessible, with support provided to
+          selected participants.
         </motion.div>
       </div>
     </section>

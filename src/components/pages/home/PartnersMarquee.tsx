@@ -3,18 +3,30 @@
 import { motion } from "framer-motion";
 
 const partners = [
-  { name: "Women Empowerment Network", category: "Community Partner" },
-  { name: "Lagos State Ministry of Youth", category: "Government" },
-  { name: "UN Women Nigeria", category: "Development Partner" },
-  { name: "Access Bank Foundation", category: "Corporate Foundation" },
-  { name: "LEAP Africa", category: "Youth Development" },
-  { name: "FATE Foundation", category: "Entrepreneurship" },
-  { name: "Tony Elumelu Foundation", category: "Empowerment" },
-  { name: "UNICEF Nigeria", category: "International Partner" },
-  { name: "National Youth Service Corps", category: "Youth Engagement" },
-  { name: "Lagos State Employment Trust Fund", category: "Enterprise Support" },
-  { name: "SMEDAN", category: "Small Business Support" },
-  { name: "ActionAid Nigeria", category: "Nonprofit Partner" },
+  {
+    name: "Hovah West African Services Ltd",
+    category: "Training & Implementation Partner",
+  },
+  {
+    name: "Community-Based Organizations",
+    category: "Local Partners",
+  },
+  {
+    name: "Industry Trainers & Facilitators",
+    category: "Training Partners",
+  },
+  {
+    name: "Employer Networks",
+    category: "Placement Partners",
+  },
+  {
+    name: "Volunteer Networks",
+    category: "Support Partners",
+  },
+  {
+    name: "Youth Development Groups",
+    category: "Community Partners",
+  },
 ];
 
 const doubled = [...partners, ...partners];
@@ -29,7 +41,7 @@ export default function PartnersMarquee() {
           viewport={{ once: true }}
           className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground"
         >
-          Working with partners to empower communities across Nigeria
+          Collaborating to Create Lasting Impact Across Nigeria
         </motion.p>
       </div>
 

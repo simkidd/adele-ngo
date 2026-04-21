@@ -7,24 +7,27 @@ import { Quote } from "lucide-react";
 const testimonials = [
   {
     quote:
-      "I went from uncertain to employed — and now I mentor others. The training changed my life and gave me the confidence to pursue my dreams.",
-    name: "Ama Mensah",
-    role: "Digital Literacy Graduate",
-    avatar: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&q=80",
+      "Before joining the program, I had no digital skills and struggled to find work. Today, I earn as a freelance designer and support myself independently.",
+    name: "Chinedu Okafor",
+    role: "Digital Skills Program Participant",
+    avatar:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80",
   },
   {
     quote:
-      "The training gave me skills I use every day in my business. I started small, but now I employ three people in my community.",
-    name: "Kwame Asante",
-    role: "Entrepreneurship Graduate",
-    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80",
+      "The entrepreneurship training helped me turn my small idea into a real business. I now run my own shop and employ two people in my community.",
+    name: "Aisha Bello",
+    role: "Entrepreneurship Program Participant",
+    avatar:
+      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=200&q=80",
   },
   {
     quote:
-      "I found not just a job, but a career path I'm passionate about. The mentorship and support made all the difference.",
-    name: "Abena Osei",
-    role: "Culinary Arts Graduate",
-    avatar: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=200&q=80",
+      "What stood out for me was the mentorship. I didn’t just learn — I got guidance and direction. That made all the difference in my career path.",
+    name: "Emeka Nwankwo",
+    role: "Skills Development Program Participant",
+    avatar:
+      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&q=80",
   },
 ];
 
@@ -40,7 +43,7 @@ export default function Testimonials() {
             viewport={{ once: true }}
             className="text-primary font-semibold text-sm tracking-widest uppercase mb-3"
           >
-            Testimonials
+            Success Stories
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -49,7 +52,7 @@ export default function Testimonials() {
             transition={{ delay: 0.1 }}
             className="font-heading text-4xl md:text-5xl font-black text-slate-900 mb-4"
           >
-            Success Stories
+            Real Stories. Real Impact.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -58,7 +61,8 @@ export default function Testimonials() {
             transition={{ delay: 0.2 }}
             className="text-slate-500"
           >
-            Hear from those whose lives have been transformed by our programs.
+            Hear directly from individuals who have gained skills, found
+            opportunities, and improved their livelihoods through our programs.
           </motion.p>
         </div>
 
@@ -82,7 +86,10 @@ export default function Testimonials() {
                 transition={{ delay: i * 0.15 + 0.2 }}
                 className="text-primary/20 mb-4"
               >
-                <Quote size={40} className="fill-primary/20 stroke-primary/30" />
+                <Quote
+                  size={40}
+                  className="fill-primary/20 stroke-primary/30"
+                />
               </motion.div>
 
               {/* Quote text */}
@@ -110,10 +117,17 @@ export default function Testimonials() {
                   }}
                   className="relative w-11 h-11 rounded-full overflow-hidden flex-shrink-0"
                 >
-                  <Image src={t.avatar} alt={t.name} fill className="object-cover" />
+                  <Image
+                    src={t.avatar}
+                    alt={`${t.name} - Adele Empowerment Foundation beneficiary`}
+                    fill
+                    className="object-cover"
+                  />
                 </motion.div>
                 <div>
-                  <div className="font-semibold text-slate-900 text-sm">{t.name}</div>
+                  <div className="font-semibold text-slate-900 text-sm">
+                    {t.name}
+                  </div>
                   <div className="text-primary text-xs">{t.role}</div>
                 </div>
               </div>

@@ -50,7 +50,7 @@ export default function Header() {
             isDark ? "bg-white/95 backdrop-blur-md shadow-sm" : "",
           )}
         >
-          <Logo />
+          <Logo className="w-10 lg:w-14 h-10 lg:h-14" />
         </Link>
 
         {/* Desktop nav */}
