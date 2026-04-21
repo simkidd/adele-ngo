@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Gallery | Adele Empowerment Foundation",
   description:
-    "A visual journey through Adele's programs, graduations, community events, and the people transforming their lives across Ghana.",
+    "A visual journey through Adele's programs, graduations, community events, and the people transforming their lives across Nigeria.",
 };
 
 export default function GalleryPage() {

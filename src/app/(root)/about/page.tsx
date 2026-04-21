@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Us | Adele Empowerment Foundation",
   description:
-    "Learn about the Adele Empowerment Foundation — our history, mission, values, team, and the communities we serve across Ghana.",
+    "Learn about the Adele Empowerment Foundation — our history, mission, values, team, and the communities we serve across Nigeria.",
 };
 
 export default function AboutPage() {

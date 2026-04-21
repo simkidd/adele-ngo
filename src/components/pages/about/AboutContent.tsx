@@ -81,32 +81,27 @@ const milestones = [
   {
     year: "2015",
     title: "Foundation Established",
-    desc: "Adele began with a single cohort of 15 participants in Accra's Madina neighbourhood, running a 6-week digital literacy pilot.",
+    desc: "Adele Empowerment Foundation was founded with a focus on community-based empowerment and skills development.",
   },
   {
-    year: "2017",
-    title: "Expanded to 3 Programs",
-    desc: "Added Entrepreneurship and Culinary Arts tracks. Graduated our first 100 participants and established our first employer partnership network.",
+    year: "Early Years",
+    title: "Program Development",
+    desc: "Initial training programs were introduced, focusing on practical skills and community engagement.",
   },
   {
-    year: "2019",
-    title: "National Reach",
-    desc: "Expanded to 5 regions across Nigeria. Launched our flagship Tailoring & Textiles program and received USAID recognition for programme excellence.",
+    year: "Growth Phase",
+    title: "Expanding Reach",
+    desc: "Programs expanded to serve more participants through partnerships with facilitators and community groups.",
   },
   {
-    year: "2021",
-    title: "10,000 Lives Touched",
-    desc: "Crossed the 10,000 participant milestone. Added Carpentry & Woodwork. Partnered with 80+ employers to create direct job pipelines.",
+    year: "Recent Years",
+    title: "Strengthening Impact",
+    desc: "Continued delivery of training, mentorship, and support programs across communities.",
   },
   {
-    year: "2023",
-    title: "Regional Leadership",
-    desc: "Began pilot operations in Togo and Côte d'Ivoire. Received the Africa Social Impact Award and launched our alumni mentorship network.",
-  },
-  {
-    year: "2025",
-    title: "12,000+ & Growing",
-    desc: "12,000 graduates across 45+ communities, a 68% employment rate, and ambitious plans to reach 20,000 by 2027.",
+    year: "Today",
+    title: "Ongoing Impact",
+    desc: "Focused on scaling access to opportunities and empowering more individuals across Nigeria.",
   },
 ];
 
@@ -130,17 +125,16 @@ export default function AboutContent() {
                 We believe potential is everywhere. Opportunity is not.
               </h2>
               <p className="text-slate-600 leading-relaxed mb-5">
-                The Adele Empowerment Foundation was born from a simple
-                observation: Nigeria is full of brilliant, motivated people who
-                simply lack access to the skills and networks that open doors.
-                We exist to change that — systematically, sustainably, and at
-                scale.
+                The Adele Empowerment Foundation is a nonprofit organisation
+                committed to equipping individuals — especially youth and women
+                — with practical skills, mentorship, and access to opportunities
+                that improve their livelihoods.
               </p>
               <p className="text-slate-600 leading-relaxed mb-8">
-                We don&apos;t believe in charity for its own sake. We believe in
-                investment — in people, in skills, in communities. Our graduates
-                don&apos;t just get jobs; they become entrepreneurs, mentors,
-                and community leaders who pay their growth forward.
+                Since our founding, we have worked within communities to deliver
+                training programs, connect participants with support networks,
+                and create pathways toward employment, entrepreneurship, and
+                self-reliance.
               </p>
               <div className="grid grid-cols-2 gap-6">
                 <div className="bg-primary/5 rounded-2xl p-5">
@@ -164,12 +158,13 @@ export default function AboutContent() {
               {[
                 {
                   label: "Our Mission",
-                  text: "To empower individuals in underserved communities with practical skills, mentorship, and employment connections that create economic independence and lasting community transformation.",
+                  text: "To empower individuals in underserved communities with practical skills, mentorship, and access to opportunities that enable sustainable livelihoods and economic independence.",
                   color: "border-primary/60 bg-primary/5",
                 },
+
                 {
                   label: "Our Vision",
-                  text: "A West Africa where geography and circumstance no longer determine destiny — where every individual has access to the tools they need to build a dignified and prosperous life.",
+                  text: "A society where every individual has the skills, support, and opportunity needed to build a dignified and productive life.",
                   color: "border-slate-400 bg-slate-50",
                 },
               ].map((item, i) => (
@@ -391,8 +386,8 @@ export default function AboutContent() {
             transition={{ delay: 0.1 }}
             className="text-primary-foreground/80 mb-8 text-lg leading-relaxed"
           >
-            Whether you&apos;re an employer, donor, government body, or community
-            leader — we’d love to explore how we can work together.
+            Whether you&apos;re an employer, donor, government body, or
+            community leader — we’d love to explore how we can work together.
           </motion.p>
 
           <motion.div
