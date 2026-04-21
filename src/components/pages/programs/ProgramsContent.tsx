@@ -203,7 +203,9 @@ function ProgramCard({
             <div className="font-heading text-xl font-bold leading-none text-white">
               {program.title}
             </div>
-            <div className="mt-0.5 text-xs text-white/85">{program.tagline}</div>
+            <div className="mt-0.5 text-xs text-white/85">
+              {program.tagline}
+            </div>
           </div>
         </div>
       </div>
@@ -313,8 +315,9 @@ export default function ProgramsContent() {
                 transition={{ delay: 0.1 }}
                 className="mb-4 leading-relaxed text-muted-foreground"
               >
-                All Adele programs are designed to equip young Nigerians with
-                practical, income-generating skills.
+                The Adele Empowerment Foundation runs practical training
+                programs designed to help individuals in underserved communities
+                build usable, income-generating skills.
               </motion.p>
 
               <motion.p
@@ -324,8 +327,9 @@ export default function ProgramsContent() {
                 transition={{ delay: 0.15 }}
                 className="mb-8 leading-relaxed text-muted-foreground"
               >
-                We combine hands-on training, mentorship, and real-world
-                exposure to help participants move from learning to earning.
+                Our programs are delivered through facilitators, partner
+                trainers, and community-based learning models, focusing on
+                real-world application rather than theory.
               </motion.p>
 
               <motion.div
@@ -414,23 +418,23 @@ export default function ProgramsContent() {
             {[
               {
                 step: "01",
-                title: "Submit Application",
-                desc: "Complete our short application form with your details and program interest.",
+                title: "Expression of Interest",
+                desc: "Interested individuals submit basic details or are referred through community partners.",
               },
               {
                 step: "02",
-                title: "Screening Review",
-                desc: "Our team reviews your application and may contact you for a short conversation.",
+                title: "Selection & Matching",
+                desc: "Participants are matched to available training cohorts based on interest and capacity.",
               },
               {
                 step: "03",
-                title: "Acceptance & Onboarding",
-                desc: "Successful applicants receive onboarding details, program information, and orientation guidance.",
+                title: "Onboarding",
+                desc: "Selected participants receive program details and orientation from facilitators.",
               },
               {
                 step: "04",
-                title: "Begin Training",
-                desc: "Start learning with your cohort, facilitator, and support community.",
+                title: "Training Begins",
+                desc: "Participants begin hands-on learning with guidance from trainers and mentors.",
               },
             ].map((s, i) => (
               <motion.div
@@ -444,7 +448,9 @@ export default function ProgramsContent() {
                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary font-heading text-lg font-black text-primary-foreground">
                   {s.step}
                 </div>
-                <h3 className="mb-2 font-semibold text-foreground">{s.title}</h3>
+                <h3 className="mb-2 font-semibold text-foreground">
+                  {s.title}
+                </h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">
                   {s.desc}
                 </p>
