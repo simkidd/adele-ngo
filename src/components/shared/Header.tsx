@@ -7,6 +7,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import Logo from "./Logo";
+import { useQuery } from "@tanstack/react-query";
+import { cohortApi } from "@/lib/api/cohort.api";
 
 const links = [
   { label: "Programs", href: "/programs" },
@@ -30,7 +32,21 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const {
+    data,
+    isLoading: isCohortLoading,
+    isError: isCohortError,
+  } = useQuery({
+    queryKey: ["open-cohort"],
+    queryFn: cohortApi.getOpenCohort,
+    retry: 1,
+  });
+
+  const cohortData = data?.data;
+
   const isDark = isHome ? !scrolled : false;
+
+  const canApply = cohortData?.status === "Open";
 
   return (
     <motion.header
@@ -80,12 +96,21 @@ export default function Header() {
             );
           })}
 
-          <Link
-            href="/apply"
-            className="bg-primary hover:bg-primary/90 text-white text-sm font-bold px-5 py-2 rounded-full transition-all hover:scale-105"
-          >
-            Apply Now
-          </Link>
+          {canApply ? (
+            <Link
+              href="/applicant/apply"
+              className="bg-primary hover:bg-primary/90 text-white text-sm font-bold px-5 py-2 rounded-full transition-all hover:scale-105"
+            >
+              Apply Now
+            </Link>
+          ) : (
+            <Link
+              href="/applicant/auth/login"
+              className="bg-primary hover:bg-primary/90 text-white text-sm font-bold px-5 py-2 rounded-full transition-all hover:scale-105"
+            >
+              Applicant Login
+            </Link>
+          )}
         </div>
 
         {/* Mobile toggle */}
@@ -125,19 +150,22 @@ export default function Header() {
 
               <>
                 <Link
-                  href="/login"
+                  href="/applicant/auth/login"
                   className="text-slate-700 font-medium"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Login
+                  Applicant Login
                 </Link>
-                <Link
-                  href="/apply"
-                  className="bg-primary hover:bg-primary/90 text-white text-center font-bold px-5 py-2.5 rounded-full"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Apply Now
-                </Link>
+
+                {canApply && (
+                  <Link
+                    href="/applicant/apply"
+                    className="bg-primary hover:bg-primary/90 text-white text-center font-bold px-5 py-2.5 rounded-full"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    Apply Now
+                  </Link>
+                )}
               </>
             </div>
           </motion.div>

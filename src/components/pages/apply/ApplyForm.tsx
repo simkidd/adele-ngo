@@ -774,7 +774,7 @@ export default function ApplyForm() {
         <button
           onClick={() => (step === 0 ? null : setStep((s) => s - 1))}
           disabled={step === 0}
-          className="flex items-center gap-1.5 text-slate-500 hover:text-slate-800 font-medium text-sm disabled:opacity-30 transition-colors cursor-pointer"
+          className="flex items-center gap-1.5 text-slate-500 hover:text-slate-800 font-medium text-sm disabled:opacity-0 transition-colors cursor-pointer"
         >
           <ChevronLeft size={16} /> Back
         </button>
@@ -784,7 +784,7 @@ export default function ApplyForm() {
             disabled={!canProceed()}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="flex items-center gap-1.5 bg-primary disabled:opacity-40 hover:bg-primary/60 text-white font-bold px-7 py-3 rounded-full text-sm transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 bg-primary disabled:opacity-40 hover:bg-primary/60 text-white font-bold px-7 py-3 rounded-xl text-sm transition-colors cursor-pointer"
           >
             Continue <ChevronRight size={16} />
           </motion.button>
@@ -794,7 +794,7 @@ export default function ApplyForm() {
             disabled={!canProceed() || registerMutation.isPending}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="flex items-center gap-2 bg-primary disabled:opacity-40 hover:bg-primary/60 text-white font-bold px-8 py-3 rounded-full text-sm transition-colors cursor-pointer"
+            className="flex items-center gap-2 bg-primary disabled:opacity-40 hover:bg-primary/60 text-white font-bold px-8 py-3 rounded-xl text-sm transition-colors cursor-pointer"
           >
             {registerMutation.isPending ? (
               <>
@@ -808,9 +808,9 @@ export default function ApplyForm() {
         )}
       </div>
       <p className="text-center text-sm text-slate-500 mt-6">
-        Already applied?{" "}
+        Already have an account?{" "}
         <Link
-          href="/login"
+          href="/applicant/auth/login"
           className="text-primary font-semibold hover:underline"
         >
           Log in here

@@ -26,6 +26,22 @@ export const getApiError = (error: unknown): string => {
   return (error as Error).message ?? "Something went wrong";
 };
 
+const isAdminAuthRoute = (url?: string) => {
+  return (
+    url?.includes("/auth/login") ||
+    url?.includes("/auth/refresh") ||
+    url?.includes("/auth/logout")
+  );
+};
+
+const isApplicantAuthRoute = (url?: string) => {
+  return (
+    url?.includes("/applicant/login") ||
+    url?.includes("/applicant/register") ||
+    url?.includes("/applicant/refresh")
+  );
+};
+
 const createInstance = (): AxiosInstance =>
   axios.create({
     baseURL: BASE_URL,
@@ -51,7 +67,11 @@ adminApiInstance.interceptors.response.use(
     const orig = error.config as InternalAxiosRequestConfig & {
       _retry?: boolean;
     };
-    if (error.response?.status === 401 && !orig._retry) {
+    if (
+      error.response?.status === 401 &&
+      !orig._retry &&
+      !isAdminAuthRoute(orig.url)
+    ) {
       if (isRefreshingAdmin)
         return new Promise((res) =>
           adminQueue.push((t) => {
@@ -75,7 +95,8 @@ adminApiInstance.interceptors.response.use(
         return adminApiInstance(orig);
       } catch {
         setAdminToken(null);
-        if (typeof window !== "undefined") window.location.href = "/admin";
+        if (typeof window !== "undefined")
+          window.location.href = "/admin/auth/login";
         return Promise.reject(error);
       } finally {
         isRefreshingAdmin = false;
@@ -102,7 +123,11 @@ applicantApiInstance.interceptors.response.use(
     const orig = error.config as InternalAxiosRequestConfig & {
       _retry?: boolean;
     };
-    if (error.response?.status === 401 && !orig._retry) {
+    if (
+      error.response?.status === 401 &&
+      !orig._retry &&
+      !isApplicantAuthRoute(orig.url)
+    ) {
       if (isRefreshingApplicant)
         return new Promise((res) =>
           applicantQueue.push((t) => {
@@ -126,7 +151,8 @@ applicantApiInstance.interceptors.response.use(
         return applicantApiInstance(orig);
       } catch {
         setApplicantToken(null);
-        if (typeof window !== "undefined") window.location.href = "/login";
+        if (typeof window !== "undefined")
+          window.location.href = "/applicant/auth/login";
         return Promise.reject(error);
       } finally {
         isRefreshingApplicant = false;
