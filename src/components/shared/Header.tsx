@@ -79,6 +79,13 @@ export default function Header() {
               </Link>
             );
           })}
+
+          <Link
+            href="/apply"
+            className="bg-primary hover:bg-primary/90 text-white text-sm font-bold px-5 py-2 rounded-full transition-all hover:scale-105"
+          >
+            Apply Now
+          </Link>
         </div>
 
         {/* Mobile toggle */}
@@ -115,6 +122,23 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
+
+              <>
+                <Link
+                  href="/login"
+                  className="text-slate-700 font-medium"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/apply"
+                  className="bg-primary hover:bg-primary/90 text-white text-center font-bold px-5 py-2.5 rounded-full"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Apply Now
+                </Link>
+              </>
             </div>
           </motion.div>
         )}
