@@ -16,6 +16,8 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useAdminLogout } from "@/hooks/mutations/use-admin-logout";
 import { useAdminStore } from "@/stores/admin.store";
+import { cn } from "@/lib/utils";
+import Logo from "../shared/Logo";
 
 export function Sidebar({
   mobile,
@@ -62,14 +64,15 @@ export function Sidebar({
       {/* Logo */}
       <div className="flex items-center justify-between px-6 py-5 border-b border-slate-800">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-            <span className="font-heading font-black text-sm text-white">
-              A
-            </span>
+          <div
+            className={cn(
+              "flex items-center justify-center gap-2 p-1.5 rounded-full bg-white w-fit",
+            )}
+          >
+            <Logo className="h-7 w-7" />
           </div>
-          <span className="font-heading font-black text-white">
-            Adele Admin
-          </span>
+
+          <span className="font-heading font-black text-white">Admin</span>
         </div>
         {mobile && (
           <button
