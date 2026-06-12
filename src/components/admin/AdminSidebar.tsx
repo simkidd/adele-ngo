@@ -1,22 +1,26 @@
 "use client";
+import { useAdminLogout } from "@/hooks/mutations/use-admin-logout";
+import { cn } from "@/lib/utils";
+import { useAdminStore } from "@/stores/admin.store";
+import { AnimatePresence, motion } from "framer-motion";
 import {
+  Building2,
   CalendarDays,
   ChevronRight,
   FileText,
+  Fingerprint,
   GraduationCap,
   Inbox,
   LayoutDashboard,
   LogOut,
   Settings,
+  Speaker,
+  User2,
   X,
 } from "lucide-react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { useAdminLogout } from "@/hooks/mutations/use-admin-logout";
-import { useAdminStore } from "@/stores/admin.store";
-import { cn } from "@/lib/utils";
 import Logo from "../shared/Logo";
 
 export function Sidebar({
@@ -38,6 +42,13 @@ export function Sidebar({
     { label: "Overview", href: "/admin/dashboard", icon: LayoutDashboard },
     { label: "Blog", href: "/admin/dashboard/blog", icon: FileText },
     { label: "Events", href: "/admin/dashboard/events", icon: CalendarDays },
+    { label: "Centers", href: "/admin/dashboard/centers", icon: Building2 },
+    {
+      label: "Biometrics",
+      href: "/admin/dashboard/biometric",
+      icon: Fingerprint,
+    },
+    { label: "Applicants", href: "/admin/dashboard/applicants", icon: User2 },
     {
       label: "Programs",
       icon: GraduationCap,
@@ -54,6 +65,12 @@ export function Sidebar({
       ],
     },
     { label: "Submissions", href: "/admin/dashboard/submissions", icon: Inbox },
+    {
+      label: "Announcements",
+      href: "/admin/dashboard/announcements",
+      icon: Speaker,
+    },
+    { label: "Staffs", href: "/admin/dashboard/users", icon: User2 },
     { label: "Settings", href: "/admin/dashboard/settings", icon: Settings },
   ];
 

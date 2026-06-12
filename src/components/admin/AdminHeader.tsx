@@ -16,6 +16,7 @@ const getAdminPageTitle = (pathname: string) => {
     "/admin/dashboard": "Overview",
     "/admin/dashboard/blog": "Blog",
     "/admin/dashboard/events": "Events",
+    "/admin/dashboard/centers": "Centers",
     "/admin/dashboard/programs/registrations": "Registrations",
     "/admin/dashboard/programs/cohorts": "Cohorts",
     "/admin/dashboard/programs/certifications": "Certifications",

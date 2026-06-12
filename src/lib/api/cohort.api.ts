@@ -1,6 +1,10 @@
-import { ICohort } from "@/interfaces/cohort.interface";
+import { CohortStatus, ICohort } from "@/interfaces/cohort.interface";
 import { adminApiInstance, publicApi } from "../axios";
 import { ApiResponse } from "@/interfaces/response.interface";
+import {
+  CreateCohortInput,
+  UpdateCohortInput,
+} from "@/app/(admin)/admin/dashboard/programs/cohorts/page";
 
 export const cohortApi = {
   getOpenCohort: async (): Promise<ApiResponse<ICohort | null>> => {
@@ -10,6 +14,7 @@ export const cohortApi = {
 
   listCohorts: async (): Promise<ApiResponse<ICohort[]>> => {
     const res = await adminApiInstance.get("/cohorts");
+    console.log("res>>>", res);
     return res.data;
   },
 
@@ -18,14 +23,16 @@ export const cohortApi = {
     return res.data;
   },
 
-  createCohort: async (data: any): Promise<ApiResponse<ICohort>> => {
+  createCohort: async (
+    data: CreateCohortInput,
+  ): Promise<ApiResponse<ICohort>> => {
     const res = await adminApiInstance.post("/cohorts", data);
     return res.data;
   },
 
   updateCohort: async (
     id: string,
-    data: any,
+    data: UpdateCohortInput,
   ): Promise<ApiResponse<ICohort>> => {
     const res = await adminApiInstance.patch(`/cohorts/${id}`, data);
     return res.data;
@@ -33,7 +40,7 @@ export const cohortApi = {
 
   updateCohortStatus: async (
     id: string,
-    data: any,
+    data: { status: CohortStatus },
   ): Promise<ApiResponse<ICohort>> => {
     const res = await adminApiInstance.patch(`/cohorts/${id}/status`, data);
     return res.data;

@@ -22,3 +22,12 @@ export interface IProgram {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface CreateProductInput {
+  title: string;
+  category: ProgramCategory;
+  description: string;
+  objectives: string[];
+  outcomes: string[];
+  isActive: boolean;
+}
