@@ -32,6 +32,7 @@ export default function AdminSettingsPage() {
     newRsvp: false,
     weeklyDigest: true,
   });
+
   const saveSection = async (section: string) => {
     setLoading(true);
     setError("");
@@ -62,6 +63,7 @@ export default function AdminSettingsPage() {
     }
     setLoading(false);
   };
+
   return (
     <div className="max-w-3xl space-y-8">
       {error && (

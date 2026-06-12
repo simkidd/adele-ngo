@@ -1,29 +1,9 @@
 "use client";
 
-import { useState, useEffect, createContext, useContext } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import {
-  LayoutDashboard,
-  FileText,
-  CalendarDays,
-  GraduationCap,
-  Users,
-  Award,
-  Inbox,
-  Settings,
-  LogOut,
-  Menu,
-  X,
-  ChevronDown,
-  ChevronRight,
-  Eye,
-  EyeOff,
-} from "lucide-react";
-import { Sidebar } from "./AdminSidebar";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 import { AdminHeader } from "./AdminHeader";
-import { LoginGate } from "./LoginGate";
+import { Sidebar } from "./AdminSidebar";
 
 // ── Layout ────────────────────────────────────────────────────────────────────
 export default function AdminShell({
@@ -32,18 +12,11 @@ export default function AdminShell({
   children: React.ReactNode;
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const pathname = usePathname();
-
-  // const isAuthPage = pathname.startsWith("/admin/auth");
-
-  // if (isAuthPage) {
-  //   return <>{children}</>;
-  // }
 
   return (
-    <div className="flex h-screen bg-slate-100 overflow-hidden">
+    <div className="flex h-dvh bg-slate-100 overflow-hidden">
       {/* Desktop sidebar */}
-      <div className="hidden md:flex flex-shrink-0">
+      <div className="hidden md:flex shrink-0">
         <Sidebar />
       </div>
 
@@ -77,7 +50,9 @@ export default function AdminShell({
         <AdminHeader onMenuClick={() => setMobileOpen(true)} />
 
         {/* Page content */}
-        <main className="flex-1 overflow-y-auto p-6">{children}</main>
+        <main className="flex-1 overflow-y-auto p-6">
+          <div className="w-full max-w-7xl mx-auto">{children}</div>
+        </main>
       </div>
     </div>
   );
