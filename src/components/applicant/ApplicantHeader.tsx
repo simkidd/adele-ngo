@@ -68,7 +68,7 @@ export default function ApplicantHeader({
           </button>
         )}
 
-        <div className="hidden sm:flex items-center gap-3 pl-4 border-l border-slate-100">
+        <div className="flex items-center gap-3 pl-4 border-l border-slate-100">
           {!applicant ? (
             <>
               <div className="text-right space-y-2">
@@ -80,7 +80,7 @@ export default function ApplicantHeader({
             </>
           ) : (
             <>
-              <div className="text-right">
+              <div className="text-right hidden sm:flex flex-col">
                 <p className="text-sm font-semibold text-slate-900 leading-none">
                   {applicant.fullName}
                 </p>

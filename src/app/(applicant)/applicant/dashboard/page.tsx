@@ -95,11 +95,11 @@ export default function DashboardOverview() {
           {applicant.fullName}
         </h2>
 
-        {reg?.referenceNumber && (
+        {/* {reg?.referenceNumber && (
           <p className="text-slate-400 text-xs font-mono">
             {reg.referenceNumber}
           </p>
-        )}
+        )} */}
       </motion.div>
 
       {reg && cfg ? (
