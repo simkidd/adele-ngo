@@ -1,16 +1,19 @@
 "use client";
-import React, { useState } from "react";
-import { z } from "zod";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { AnimatePresence, motion } from "framer-motion";
-import { cohortApi } from "@/lib/api/cohort.api";
-import { usePrograms } from "@/hooks/queries/use-programs";
 import { useCenters } from "@/hooks/queries/use-centers";
+import { usePrograms } from "@/hooks/queries/use-programs";
+import { ICohort } from "@/interfaces/cohort.interface";
+import { cohortApi } from "@/lib/api/cohort.api";
 import { getApiError } from "@/lib/axios";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 import { CheckCircle2, Loader2, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { z } from "zod";
 
 interface NewCohortModalProps {
   onClose: () => void;
+  cohort?: ICohort;
+  mode?: "create" | "edit";
 }
 
 const centerProgramSchema = z.object({
@@ -89,13 +92,37 @@ const initialForm: CohortForm = {
   centers: [],
 };
 
-const NewCohortModal = ({ onClose }: NewCohortModalProps) => {
+const NewCohortModal = ({
+  onClose,
+  cohort,
+  mode = "create",
+}: NewCohortModalProps) => {
   const queryClient = useQueryClient();
   const [error, setError] = useState("");
   const [form, setForm] = useState<CohortForm>(initialForm);
+  const isEdit = mode === "edit";
 
   const { data: programs = [], isPending: programsLoading } = usePrograms();
   const { data: centers = [], isPending: centersLoading } = useCenters();
+
+  useEffect(() => {
+    if (cohort && isEdit) {
+      setForm({
+        name: cohort.name,
+        applicationStart: cohort.applicationStart.split("T")[0],
+        applicationEnd: cohort.applicationEnd.split("T")[0],
+        startDate: cohort.startDate.split("T")[0],
+        endDate: cohort.endDate.split("T")[0],
+        centers: cohort.centers.map((center) => ({
+          centerId: center.centerId._id,
+          programs: center.programs.map((program) => ({
+            programId: program.programId._id,
+            totalSeats: program.totalSeats,
+          })),
+        })),
+      });
+    }
+  }, [cohort, isEdit]);
 
   const createCohort = useMutation({
     mutationFn: (data: CreateCohortInput) => cohortApi.createCohort(data),
@@ -106,12 +133,32 @@ const NewCohortModal = ({ onClose }: NewCohortModalProps) => {
     },
   });
 
-  const addCenter = (centerId: string) => {
-    if (form.centers.find((c) => c.centerId === centerId)) return;
-    setForm((f) => ({
-      ...f,
-      centers: [...f.centers, { centerId, programs: [] }],
-    }));
+  const updateCohort = useMutation({
+    mutationFn: (data: UpdateCohortInput) =>
+      cohortApi.updateCohort(cohort!._id, data),
+
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["cohorts"] });
+      queryClient.invalidateQueries({ queryKey: ["open-cohort"] });
+    },
+  });
+
+  const toggleCenter = (centerId: string) => {
+    setForm((f) => {
+      const exists = f.centers.find((c) => c.centerId === centerId);
+
+      if (exists) {
+        return {
+          ...f,
+          centers: f.centers.filter((c) => c.centerId !== centerId),
+        };
+      }
+
+      return {
+        ...f,
+        centers: [...f.centers, { centerId, programs: [] }],
+      };
+    });
   };
 
   const addProgram = (centerId: string, programId: string) => {
@@ -121,6 +168,20 @@ const NewCohortModal = ({ onClose }: NewCohortModalProps) => {
         c.centerId === centerId &&
         !c.programs.find((p) => p.programId === programId)
           ? { ...c, programs: [...c.programs, { programId, totalSeats: 20 }] }
+          : c,
+      ),
+    }));
+  };
+
+  const removeProgram = (centerId: string, programId: string) => {
+    setForm((f) => ({
+      ...f,
+      centers: f.centers.map((c) =>
+        c.centerId === centerId
+          ? {
+              ...c,
+              programs: c.programs.filter((p) => p.programId !== programId),
+            }
           : c,
       ),
     }));
@@ -145,7 +206,9 @@ const NewCohortModal = ({ onClose }: NewCohortModalProps) => {
   const save = async () => {
     setError("");
 
-    createCohort.mutate(form, {
+    const mutation = isEdit ? updateCohort : createCohort;
+
+    mutation.mutate(form, {
       onSuccess: () => {
         onClose();
         setForm(initialForm);
@@ -155,6 +218,8 @@ const NewCohortModal = ({ onClose }: NewCohortModalProps) => {
       },
     });
   };
+
+  const isLoading = createCohort.isPending || updateCohort.isPending;
 
   return (
     <motion.div
@@ -166,7 +231,7 @@ const NewCohortModal = ({ onClose }: NewCohortModalProps) => {
     >
       <div className="flex items-center justify-between px-7 py-5 border-b border-slate-100">
         <h2 className="font-heading font-black text-xl text-slate-900">
-          New Cohort
+          {isEdit ? "Update Cohort" : "Create Cohort"}
         </h2>
         <button
           onClick={onClose}
@@ -260,8 +325,9 @@ const NewCohortModal = ({ onClose }: NewCohortModalProps) => {
             {centers.map((c) => (
               <button
                 key={c._id}
-                onClick={() => addCenter(c._id)}
-                className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${form.centers.find((fc) => fc.centerId === c._id) ? "bg-primary text-white" : "bg-slate-100 text-slate-600 hover:bg-primary/10"}`}
+                type="button"
+                onClick={() => toggleCenter(c._id)}
+                className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer ${form.centers.find((fc) => fc.centerId === c._id) ? "bg-primary text-white" : "bg-slate-100 text-slate-600 hover:bg-primary/10"}`}
               >
                 {c.code} — {c.name.replace(" Training Center", "")}
                 {form.centers.find((fc) => fc.centerId === c._id) && (
@@ -327,6 +393,16 @@ const NewCohortModal = ({ onClose }: NewCohortModalProps) => {
                           }
                           className="w-16 text-xs border border-slate-200 rounded-lg px-2 py-1 focus:outline-none focus:ring-1 focus:ring-primary/40"
                         />
+
+                        <button
+                          type="button"
+                          onClick={() =>
+                            removeProgram(centerConfig.centerId, cp.programId)
+                          }
+                          className="text-xs font-semibold text-red-500 hover:bg-red-100 p-1 rounded-full cursor-pointer"
+                        >
+                          <X size={13} />
+                        </button>
                       </div>
                     </div>
                   );
@@ -345,18 +421,16 @@ const NewCohortModal = ({ onClose }: NewCohortModalProps) => {
         </button>
         <button
           onClick={save}
-          disabled={
-            createCohort.isPending || !form.name || form.centers.length === 0
-          }
-          className="px-6 py-2.5 rounded-xl bg-primary disabled:opacity-40 hover:bg-primary/60 text-white font-bold text-sm flex items-center gap-2 transition-colors"
+          disabled={isLoading || !form.name || form.centers.length === 0}
+          className="px-6 py-2.5 rounded-xl bg-primary disabled:opacity-40 hover:bg-primary/60 text-white font-bold text-sm flex items-center gap-2 transition-colors cursor-pointer"
         >
-          {createCohort.isPending ? (
+          {isLoading ? (
             <>
               <Loader2 size={14} className="animate-spin" />
               Saving...
             </>
           ) : (
-            "Create Cohort"
+            <>{isEdit ? "Update Cohort" : "Create Cohort"}</>
           )}
         </button>
       </div>

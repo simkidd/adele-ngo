@@ -3,9 +3,22 @@ export interface ApplicantUser {
   fullName: string;
   email: string;
   phone: string;
-  passportPhoto: string;
-  ninVerified: boolean;
+  gender: "Male" | "Female";
+  dob: string;
+  stateOfOrigin: string;
+  lga: string;
+  address: string;
+  whatsapp: string;
+  nin: string;
+  passportPhoto?: string;
   biometricEnrolled: boolean;
+  biometricTemplate?: string;
+  biometricEnrolledAt?: string;
+  biometricCenterId?: string;
+  isActive: boolean;
+  lastLogin?: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface ApplicantCredentials {

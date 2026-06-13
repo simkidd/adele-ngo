@@ -34,7 +34,7 @@ export function Sidebar({
   const logout = useAdminLogout();
   const { user } = useAdminStore();
   const [programsOpen, setProgramsOpen] = useState(
-    pathname.startsWith("/admin/programs"),
+    pathname.startsWith("/admin/dashboard/programs"),
   );
 
   // ── Nav config ───────────────────────────────────────────────────────────────
@@ -105,7 +105,7 @@ export function Sidebar({
       <nav className="flex-1 px-3 py-4 overflow-y-auto space-y-1">
         {NAV.map((item) => {
           if (item.children) {
-            const isActive = pathname.startsWith("/admin/programs");
+            const isActive = pathname.startsWith("/admin/dashboard/programs");
             return (
               <div key={item.label}>
                 <button
@@ -136,7 +136,7 @@ export function Sidebar({
                           key={child.href}
                           href={child.href}
                           onClick={onClose}
-                          className={`block px-3 py-2 rounded-xl text-sm transition-colors ${pathname === child.href ? "bg-primary text-white font-semibold" : "text-slate-500 hover:text-white hover:bg-slate-800"}`}
+                          className={`block px-3 py-2 rounded-xl text-sm transition-colors ${pathname === child.href || pathname.startsWith(`${child.href}/`) ? "bg-primary text-white font-semibold" : "text-slate-500 hover:text-white hover:bg-slate-800"}`}
                         >
                           {child.label}
                         </Link>

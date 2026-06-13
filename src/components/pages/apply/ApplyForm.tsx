@@ -18,13 +18,14 @@ import { cohortApi } from "@/lib/api/cohort.api";
 import Link from "next/link";
 import Logo from "@/components/shared/Logo";
 import { cn } from "@/lib/utils";
+
 const STEPS = [
   "Identity",
   "Contact",
   "Center & Skill",
   "Background",
   "Motivation",
-  "Supporting Info",
+  "Emergency Contact",
   "Account & Review",
 ];
 const inp =
@@ -95,8 +96,7 @@ export default function ApplyForm() {
   const [emergencyName, setEmergencyName] = useState("");
   const [emergencyPhone, setEmergencyPhone] = useState("");
   const [emergencyRelation, setEmergencyRelation] = useState("");
-  const [passportPhoto, setPassportPhoto] = useState("");
-  const [photoPreview, setPhotoPreview] = useState("");
+
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [acceptTerms, setAcceptTerms] = useState(false);
@@ -114,17 +114,6 @@ export default function ApplyForm() {
 
   const cohortData = data?.data;
 
-  const uploadPassportMutation = useMutation({
-    mutationFn: (form: FormData) =>
-      authApi.uploadPassport(form).then((res) => res.data),
-    onSuccess: (data) => {
-      setPassportPhoto(data.data.url);
-    },
-    onError: (err: any) => {
-      setError(getApiError(err));
-    },
-  });
-
   const registerMutation = useMutation({
     mutationFn: (payload: any) =>
       authApi.applicantRegister(payload).then((res) => res.data),
@@ -138,14 +127,6 @@ export default function ApplyForm() {
     },
   });
 
-  const handlePhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setPhotoPreview(URL.createObjectURL(file));
-    const form = new FormData();
-    form.append("passportPhoto", file);
-    uploadPassportMutation.mutate(form);
-  };
   const canProceed = () => {
     if (step === 0)
       return (
@@ -159,7 +140,7 @@ export default function ApplyForm() {
     if (step === 2) return centerId && programId;
     if (step === 3) return qualification && employmentStatus && priorExperience;
     if (step === 4)
-      return motivation.length >= 50 && postTrainingPlan && referralSource;
+      return motivation.length >= 20 && postTrainingPlan && referralSource;
     if (step === 5) return emergencyName && emergencyPhone && emergencyRelation;
     if (step === 6)
       return (
@@ -203,7 +184,6 @@ export default function ApplyForm() {
       emergencyName,
       emergencyPhone,
       emergencyRelation,
-      passportPhoto,
       password,
       confirmPassword,
       acceptTerms,
@@ -255,7 +235,7 @@ export default function ApplyForm() {
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-xl mb-6"
+          className="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-xl mb-6 text-center"
         >
           {error}
         </motion.div>
@@ -422,13 +402,10 @@ export default function ApplyForm() {
                               setCenterId(c.centerId._id);
                               setProgramId("");
                             }}
-                            className={`p-4 rounded-2xl border-2 text-left transition-all ${centerId === c.centerId._id ? "border-primary bg-primary/50" : "border-slate-200 hover:border-primary"}`}
+                            className={`p-4 rounded-2xl border-2 text-left transition-all cursor-pointer ${centerId === c.centerId._id ? "border-primary bg-primary/50" : "border-slate-200 hover:border-primary"}`}
                           >
-                            <p className="font-semibold text-slate-900 text-sm">
+                            <p className=" text-slate-900 text-sm">
                               {c.centerId.name}
-                            </p>
-                            <p className="text-xs text-slate-400 mt-0.5">
-                              {c.programs.length} programs
                             </p>
                           </button>
                         ))}
@@ -456,13 +433,12 @@ export default function ApplyForm() {
                                 key={p.programId._id}
                                 value={p.programId._id}
                               >
-                                {p.programId.title} (
-                                {p.totalSeats - p.enrolledCount} seats left)
+                                {p.programId.title}
                               </option>
                             ))}
                           </select>
                         )}
-                        <div className="mt-3">
+                        {/* <div className="mt-3">
                           <label className={lbl}>
                             Second Choice (Optional)
                           </label>
@@ -483,7 +459,7 @@ export default function ApplyForm() {
                                 </option>
                               ))}
                           </select>
-                        </div>
+                        </div> */}
                       </motion.div>
                     )}
                   </>
@@ -549,9 +525,6 @@ export default function ApplyForm() {
                 <div>
                   <label className={lbl}>
                     Why do you want to learn this skill? *{" "}
-                    <span className="text-slate-400 normal-case">
-                      (min 50 words)
-                    </span>
                   </label>
                   <textarea
                     rows={5}
@@ -594,51 +567,6 @@ export default function ApplyForm() {
             )}
             {step === 5 && (
               <div className="space-y-5">
-                <div>
-                  <label className={lbl}>Passport Photograph</label>
-                  <div className="border-2 border-dashed border-slate-200 rounded-2xl p-6 text-center hover:border-primary transition-colors cursor-pointer relative">
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handlePhotoUpload}
-                      className="absolute inset-0 opacity-0 cursor-pointer"
-                    />
-                    {photoPreview ? (
-                      <div className="flex items-center gap-4">
-                        <img
-                          src={photoPreview}
-                          alt="Preview"
-                          className="w-16 h-20 object-cover rounded-lg border border-slate-200"
-                        />
-                        <div className="text-left">
-                          <p className="text-sm font-semibold text-slate-900">
-                            {passportPhoto ? "✓ Uploaded" : "Uploading..."}
-                          </p>
-                        </div>
-                      </div>
-                    ) : (
-                      <div>
-                        {uploadPassportMutation.isPending ? (
-                          <Loader2
-                            size={24}
-                            className="animate-spin text-primary mx-auto mb-2"
-                          />
-                        ) : (
-                          <Upload
-                            size={24}
-                            className="text-slate-400 mx-auto mb-2"
-                          />
-                        )}
-                        <p className="text-sm text-slate-500">
-                          Click to upload passport photo
-                        </p>
-                        <p className="text-xs text-slate-400 mt-1">
-                          JPG/PNG, max 5MB
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </div>
                 <div>
                   <label className={lbl}>Special Needs (Optional)</label>
                   <textarea
@@ -686,41 +614,6 @@ export default function ApplyForm() {
             )}
             {step === 6 && (
               <div className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className={lbl}>Password *</label>
-                    <div className="relative">
-                      <input
-                        type={showPw ? "text" : "password"}
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Min 8 characters"
-                        className={inp + " pr-10"}
-                      />
-                      <button
-                        type="button"
-                        onClick={() => setShowPw(!showPw)}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"
-                      >
-                        {showPw ? <EyeOff size={15} /> : <Eye size={15} />}
-                      </button>
-                    </div>
-                  </div>
-                  <div>
-                    <label className={lbl}>Confirm Password *</label>
-                    <input
-                      type="password"
-                      value={confirmPassword}
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                      className={inp}
-                    />
-                    {confirmPassword && password !== confirmPassword && (
-                      <p className="text-xs text-red-500 mt-1">
-                        Passwords do not match
-                      </p>
-                    )}
-                  </div>
-                </div>
                 <div className="bg-slate-50 rounded-2xl p-5 space-y-3 text-sm">
                   <h3 className="font-semibold text-slate-900">
                     Application Summary
@@ -752,6 +645,43 @@ export default function ApplyForm() {
                     ) : null,
                   )}
                 </div>
+
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className={lbl}>Password *</label>
+                    <div className="relative">
+                      <input
+                        type={showPw ? "text" : "password"}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Min 8 characters"
+                        className={inp + " pr-10"}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPw(!showPw)}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 cursor-pointer"
+                      >
+                        {showPw ? <EyeOff size={15} /> : <Eye size={15} />}
+                      </button>
+                    </div>
+                  </div>
+                  <div>
+                    <label className={lbl}>Confirm Password *</label>
+                    <input
+                      type="password"
+                      value={confirmPassword}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
+                      className={inp}
+                    />
+                    {confirmPassword && password !== confirmPassword && (
+                      <p className="text-xs text-red-500 mt-1">
+                        Passwords do not match
+                      </p>
+                    )}
+                  </div>
+                </div>
+
                 <label className="flex items-start gap-3 cursor-pointer">
                   <input
                     type="checkbox"

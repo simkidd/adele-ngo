@@ -4,7 +4,7 @@ import { ApiResponse } from "@/interfaces/response.interface";
 import {
   CreateCohortInput,
   UpdateCohortInput,
-} from "@/app/(admin)/admin/dashboard/programs/cohorts/page";
+} from "@/components/admin/cohorts/NewCohortModal";
 
 export const cohortApi = {
   getOpenCohort: async (): Promise<ApiResponse<ICohort | null>> => {
@@ -14,7 +14,6 @@ export const cohortApi = {
 
   listCohorts: async (): Promise<ApiResponse<ICohort[]>> => {
     const res = await adminApiInstance.get("/cohorts");
-    console.log("res>>>", res);
     return res.data;
   },
 

@@ -12,19 +12,62 @@ interface AdminHeaderProps {
 }
 
 const getAdminPageTitle = (pathname: string) => {
-  const titles: Record<string, string> = {
-    "/admin/dashboard": "Overview",
-    "/admin/dashboard/blog": "Blog",
-    "/admin/dashboard/events": "Events",
-    "/admin/dashboard/centers": "Centers",
-    "/admin/dashboard/programs/registrations": "Registrations",
-    "/admin/dashboard/programs/cohorts": "Cohorts",
-    "/admin/dashboard/programs/certifications": "Certifications",
-    "/admin/dashboard/submissions": "Submissions",
-    "/admin/dashboard/settings": "Settings",
-  };
+  if (pathname === "/admin/dashboard") return "Overview";
 
-  return titles[pathname] ?? "Admin";
+  if (pathname.startsWith("/admin/dashboard/blog")) {
+    if (pathname.includes("/new")) return "Create Blog";
+    if (pathname.split("/").length > 5) return "Edit Blog";
+    return "Blog";
+  }
+
+  if (pathname.startsWith("/admin/dashboard/events")) {
+    if (pathname.includes("/new")) return "Create Event";
+    if (pathname.split("/").length > 5) return "Event Details";
+    return "Events";
+  }
+
+  if (pathname.startsWith("/admin/dashboard/centers")) {
+    if (pathname.split("/").length > 4) return "Center Details";
+    return "Centers";
+  }
+
+  if (pathname.startsWith("/admin/dashboard/programs/registrations")) {
+    if (pathname.split("/").length > 5) return "Application Details";
+    return "Registrations";
+  }
+
+  if (pathname.startsWith("/admin/dashboard/programs/cohorts")) {
+    if (pathname.includes("/new")) return "Create Cohort";
+    if (pathname.split("/").length > 5) return "Cohort Details";
+    return "Cohorts";
+  }
+
+  if (pathname.startsWith("/admin/dashboard/programs/certifications")) {
+    return "Certifications";
+  }
+
+  if (pathname.startsWith("/admin/dashboard/submissions")) {
+    return "Submissions";
+  }
+
+  if (pathname.startsWith("/admin/dashboard/announcements")) {
+    return "Announcements";
+  }
+
+  if (pathname.startsWith("/admin/dashboard/users")) {
+    if (pathname.split("/").length > 4) return "Staff Details";
+    return "Staffs";
+  }
+
+  if (pathname.startsWith("/admin/dashboard/biometric")) {
+    return "Biometrics";
+  }
+
+  if (pathname.startsWith("/admin/dashboard/settings")) {
+    return "Settings";
+  }
+
+  return "Admin";
 };
 
 export function AdminHeader({ onMenuClick }: AdminHeaderProps) {
@@ -35,7 +78,7 @@ export function AdminHeader({ onMenuClick }: AdminHeaderProps) {
   const title = getAdminPageTitle(pathname);
 
   return (
-    <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between flex-shrink-0">
+    <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between shrink-0">
       {/* Left */}
       <div className="flex items-center gap-3">
         <button
@@ -49,10 +92,6 @@ export function AdminHeader({ onMenuClick }: AdminHeaderProps) {
           <h1 className="font-heading font-black text-xl text-slate-900">
             {title}
           </h1>
-
-          <p className="text-xs text-slate-400 mt-0.5">
-            Adele Empowerment Foundation
-          </p>
         </div>
       </div>
 
