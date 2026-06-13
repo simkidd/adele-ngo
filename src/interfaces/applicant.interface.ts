@@ -1,3 +1,6 @@
+import { IAnnouncement } from "./announcement.interface";
+import { IRegistration } from "./registration.interface";
+
 export interface ApplicantUser {
   id: string;
   fullName: string;

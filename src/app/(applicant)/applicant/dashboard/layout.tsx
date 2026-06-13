@@ -1,4 +1,5 @@
 import DashboardLayout from "@/components/applicant/DashboardLayout";
+import { ApplicantAuthGuard } from "@/guards/ApplicantAuthGuard";
 import React from "react";
 
 export default function ApplicantLayout({
@@ -6,5 +7,9 @@ export default function ApplicantLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <DashboardLayout>{children}</DashboardLayout>;
+  return (
+    <ApplicantAuthGuard>
+      <DashboardLayout>{children}</DashboardLayout>
+    </ApplicantAuthGuard>
+  );
 }

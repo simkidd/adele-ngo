@@ -1,10 +1,17 @@
+import { ICenter } from "./center.interface";
+
+export type AdminRole = "super_admin" | "program_officer" | "blog_editor";
+
 export interface AdminUser {
   id: string;
   fullName: string;
   email: string;
-  role: "super_admin" | "program_officer" | "blog_editor";
-  centerId: string | null;
+  role: AdminRole;
+  centerId?: ICenter;
   lastLogin?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  isActive: boolean;
 }
 
 export interface AdminLoginResponse {
@@ -15,7 +22,7 @@ export interface AdminLoginResponse {
 export interface CreateAdminInput {
   fullName: string;
   email: string;
-  role: "super_admin" | "program_officer" | "blog_editor";
+  role: AdminRole;
   centerId?: string;
   password: string;
 }
