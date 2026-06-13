@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useApplicantLogout } from "@/hooks/mutations/use-applicant-logout";
 import Logo from "../shared/Logo";
+import { cn } from "@/lib/utils";
 
 const NAV = [
   { label: "Overview", href: "/applicant/dashboard", icon: LayoutDashboard },
@@ -30,15 +31,19 @@ const NAV = [
 ];
 
 export default function ApplicantSidebar({
+  mobile,
   onClose,
 }: {
+  mobile?: boolean;
   onClose?: () => void;
 }) {
   const pathname = usePathname();
   const logout = useApplicantLogout();
 
   return (
-    <div className="flex h-full flex-col bg-white">
+    <div
+      className={cn("flex h-full flex-col bg-white", mobile ? "w-72" : "w-64")}
+    >
       {/* Brand */}
       <div className="px-5 py-6 border-b border-slate-100">
         <div className="flex items-center justify-between">

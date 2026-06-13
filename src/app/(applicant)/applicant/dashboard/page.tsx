@@ -1,7 +1,9 @@
 "use client";
+
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useApplicantStore } from "@/stores/applicant.store";
+import { useApplicantDashboard } from "@/hooks/queries/use-applicant-dashboard";
 import {
   FileText,
   Award,
@@ -11,12 +13,10 @@ import {
   Users,
   Bell,
   ArrowRight,
+  Loader2,
 } from "lucide-react";
 
-const STATUS_CONFIG: Record<
-  string,
-  { color: string; bg: string; icon: typeof Clock; label: string; desc: string }
-> = {
+const STATUS_CONFIG = {
   Pending: {
     color: "text-yellow-700",
     bg: "bg-yellow-50 border-yellow-200",
@@ -52,25 +52,39 @@ const STATUS_CONFIG: Record<
     label: "Unsuccessful",
     desc: "Unfortunately your application was not successful.",
   },
-};
+} as const;
+
+type RegistrationStatus = keyof typeof STATUS_CONFIG;
 
 export default function DashboardOverview() {
-  const { applicant, dashboard } = useApplicantStore();
-  const reg = dashboard?.registration as Record<string, unknown> | null;
-  const certs = dashboard?.certificate as Record<string, unknown> | null;
-  const announcements = (dashboard?.announcements ?? []) as Record<
-    string,
-    string
-  >[];
-  const status = reg?.status as string | undefined;
+  const { applicant } = useApplicantStore();
+  const { data, isPending } = useApplicantDashboard();
+
+  const dashboard = data;
+  const reg = dashboard?.registration;
+  const cert = dashboard?.certificate;
+  const announcements = dashboard?.announcements ?? [];
+
+  const status = reg?.status as RegistrationStatus | undefined;
   const cfg = status ? STATUS_CONFIG[status] : null;
   const Icon = cfg?.icon ?? Clock;
+
   if (!applicant) return null;
-  const cohort = reg?.cohortId as Record<string, string> | null;
-  const program = reg?.programId as Record<string, string> | null;
-  const center = reg?.centerId as Record<string, string> | null;
+
+  if (isPending) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <Loader2 size={28} className="animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  const cohort = reg?.cohortId;
+  const program = reg?.programId;
+  const center = reg?.centerId;
+
   return (
-    <div className="max-w-4xl space-y-6">
+    <div className=" space-y-6">
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
@@ -80,12 +94,14 @@ export default function DashboardOverview() {
         <h2 className="font-heading text-2xl font-black mb-1">
           {applicant.fullName}
         </h2>
-        {reg && (
+
+        {reg?.referenceNumber && (
           <p className="text-slate-400 text-xs font-mono">
-            {reg.referenceNumber as string}
+            {reg.referenceNumber}
           </p>
         )}
       </motion.div>
+
       {reg && cfg ? (
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -97,33 +113,22 @@ export default function DashboardOverview() {
             <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-white flex-shrink-0">
               <Icon size={20} className={cfg.color} />
             </div>
+
             <div className="flex-1">
               <p className={`font-bold text-base ${cfg.color}`}>{cfg.label}</p>
               <p className="text-slate-600 text-sm mt-1 leading-relaxed">
                 {cfg.desc}
               </p>
-              {status === "Accepted" && reg.verificationDeadline && (
-                <p className="mt-2 text-sm font-semibold text-blue-700">
-                  Deadline:{" "}
-                  {new Date(
-                    reg.verificationDeadline as string,
-                  ).toLocaleDateString("en-NG", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </p>
-              )}
             </div>
           </div>
+
           <div className="mt-4 grid sm:grid-cols-3 gap-3 pt-4 border-t border-current/10">
             {[
               ["Skill", program?.title],
               ["Center", center?.name],
               ["Cohort", cohort?.name],
             ]
-              .filter(([, v]) => v)
+              .filter(([, v]) => Boolean(v))
               .map(([k, v]) => (
                 <div key={k}>
                   <p className="text-xs text-slate-400 mb-0.5">{k}</p>
@@ -145,14 +150,9 @@ export default function DashboardOverview() {
           <p className="text-slate-500 text-sm mb-4">
             Apply for a training program to get started.
           </p>
-          <Link
-            href="/apply"
-            className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-2.5 rounded-full text-sm transition-all"
-          >
-            Apply Now <ArrowRight size={14} />
-          </Link>
         </motion.div>
       )}
+
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
@@ -163,31 +163,32 @@ export default function DashboardOverview() {
           {
             label: "Application",
             desc: "View your full application",
-            href: "/dashboard/application",
+            href: "/applicant/dashboard/application",
             icon: FileText,
             color: "text-blue-500",
             bg: "bg-blue-50",
           },
           {
             label: "Certificate",
-            desc: certs
+            desc: cert
               ? "Download your certificate"
               : "Issued after completion",
-            href: "/dashboard/certificate",
+            href: "/applicant/dashboard/certificate",
             icon: Award,
-            color: certs ? "text-orange-500" : "text-slate-300",
-            bg: certs ? "bg-orange-50" : "bg-slate-50",
+            color: cert ? "text-orange-500" : "text-slate-300",
+            bg: cert ? "bg-orange-50" : "bg-slate-50",
           },
           {
             label: "Profile",
             desc: "Manage your account",
-            href: "/dashboard/profile",
+            href: "/applicant/dashboard/profile",
             icon: Users,
             color: "text-green-500",
             bg: "bg-green-50",
           },
         ].map((item) => {
           const I = item.icon;
+
           return (
             <Link
               key={item.label}
@@ -199,6 +200,7 @@ export default function DashboardOverview() {
               >
                 <I size={20} className={item.color} />
               </div>
+
               <p className="font-semibold text-slate-900 text-sm">
                 {item.label}
               </p>
@@ -207,6 +209,7 @@ export default function DashboardOverview() {
           );
         })}
       </motion.div>
+
       {announcements.length > 0 && (
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -215,19 +218,22 @@ export default function DashboardOverview() {
           className="bg-white border border-slate-100 rounded-2xl p-6"
         >
           <div className="flex items-center gap-2 mb-4">
-            <Bell size={16} className="text-orange-500" />
+            <Bell size={16} className="text-primary" />
             <h3 className="font-semibold text-slate-900 text-sm">
               Announcements
             </h3>
           </div>
+
           <div className="space-y-3">
-            {announcements.slice(0, 3).map((a, i) => (
+            {announcements.slice(0, 3).map((a: any, i: number) => (
               <div
-                key={i}
+                key={a._id ?? i}
                 className="flex items-start gap-3 p-3 bg-slate-50 rounded-xl"
               >
                 <span
-                  className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${a.type === "Alert" ? "bg-red-500" : "bg-orange-400"}`}
+                  className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${
+                    a.type === "Alert" ? "bg-red-500" : "bg-primary"
+                  }`}
                 />
                 <div>
                   <p className="text-sm font-semibold text-slate-900">

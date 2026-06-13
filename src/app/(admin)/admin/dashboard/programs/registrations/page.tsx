@@ -19,6 +19,7 @@ const statusColors: Record<RegistrationStatus, string> = {
   Enrolled: "bg-blue-100   text-blue-700",
   Rejected: "bg-red-100    text-red-700",
   Verified: "bg-purple-100 text-purple-700",
+  Completed: "bg-slate-200 text-slate-700",
 };
 
 const STATUSES: RegistrationStatus[] = [
@@ -27,6 +28,7 @@ const STATUSES: RegistrationStatus[] = [
   "Accepted",
   "Enrolled",
   "Rejected",
+  "Completed",
 ];
 
 export default function RegistrationsPage() {

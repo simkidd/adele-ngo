@@ -4,7 +4,9 @@ import {
   RegisterApplicantInput,
   ApplicantCredentials,
   ApplicantUser,
+  ApplicationResponse,
 } from "@/interfaces/applicant.interface";
+import { IRegistration } from "@/interfaces/registration.interface";
 
 export const applicantApi = {
   registerApplicant: async (
@@ -48,8 +50,12 @@ export const applicantApi = {
     return res.data;
   },
 
-  getApplication: async () => {
-    const res = await applicantApiInstance.get("/applicant/application");
+  getApplications: async (): Promise<ApiResponse<ApplicationResponse>> => {
+    const res = await applicantApiInstance.get("/applicant/applications");
+    return res.data;
+  },
+  getApplication: async (id: string) => {
+    const res = await applicantApiInstance.get(`/applicant/application/${id}`);
     return res.data;
   },
 
@@ -60,6 +66,21 @@ export const applicantApi = {
 
   getAnnouncements: async () => {
     const res = await applicantApiInstance.get("/applicant/announcements");
+    return res.data;
+  },
+
+  getApplicantDashboard: async () => {
+    const res = await applicantApiInstance.get("/applicant/dashboard");
+    return res.data;
+  },
+
+  createReturningApplication: async (
+    data: any,
+  ): Promise<ApiResponse<IRegistration>> => {
+    const res = await applicantApiInstance.post(
+      "/applicant/application/apply",
+      data,
+    );
     return res.data;
   },
 };

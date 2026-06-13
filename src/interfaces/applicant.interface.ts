@@ -1,4 +1,5 @@
 import { IAnnouncement } from "./announcement.interface";
+import { ICohort } from "./cohort.interface";
 import { IRegistration } from "./registration.interface";
 
 export interface ApplicantUser {
@@ -59,4 +60,12 @@ export interface RegisterApplicantInput {
   password: string;
   confirmPassword: string;
   acceptTerms: boolean;
+}
+
+export interface ApplicationResponse {
+  applications: IRegistration[];
+  currentRegistration: IRegistration | null;
+  openCohort: ICohort;
+  canApply: boolean;
+  total: number;
 }
